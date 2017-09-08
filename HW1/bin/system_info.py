@@ -14,14 +14,14 @@ file.write("Operating System Type: ")
 file.write(data2[0])
 
 file.write("\n\nOperating System Distribution: ")
-file.write(data1[78:84])
+file.write(data2[8].replace("(",""))
 
 
 file.write("\n\nOperating System Version: ")
 file.write(data2[2])
 
 file.write("\n\nKernel GCC Version: ")
-file.write(data2[4])
+file.write(data2[4].replace("(",""))
 file.write(" ")
 file.write(data2[5])
 file.write(" ")
