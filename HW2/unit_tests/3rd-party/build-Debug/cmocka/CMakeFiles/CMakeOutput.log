@@ -1,0 +1,701 @@
+The system is: Linux - 4.4.0-93-generic - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/cc 
+Build flags: -std=c99;-Wall;-Werror;-g;-O0;-I;3rd-party/build-Debug/include
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/3.5.1/CompilerIdC/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_5394f/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_5394f.dir/build.make CMakeFiles/cmTC_5394f.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5394f.dir/testCCompiler.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include     -o CMakeFiles/cmTC_5394f.dir/testCCompiler.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_5394f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5394f.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include      CMakeFiles/cmTC_5394f.dir/testCCompiler.c.o  -o cmTC_5394f -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_fb56a/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_fb56a.dir/build.make CMakeFiles/cmTC_fb56a.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_fb56a.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include     -o CMakeFiles/cmTC_fb56a.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_fb56a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fb56a.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include     -v CMakeFiles/cmTC_fb56a.dir/CMakeCCompilerABI.c.o  -o cmTC_fb56a -rdynamic  
+Using built-in specs.
+COLLECT_GCC=/usr/bin/cc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 5.4.0-6ubuntu1~16.04.4' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.4) 
+COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-std=c99' '-Wall' '-Werror' '-g' '-O0' '-I' '3rd-party/build-Debug/include' '-v' '-o' 'cmTC_fb56a' '-rdynamic' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/cc3ge8jR.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_fb56a /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_fb56a.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_fb56a/fast"]
+  ignore line: [make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_fb56a.dir/build.make CMakeFiles/cmTC_fb56a.dir/build]
+  ignore line: [make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_fb56a.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include     -o CMakeFiles/cmTC_fb56a.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_fb56a]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fb56a.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include     -v CMakeFiles/cmTC_fb56a.dir/CMakeCCompilerABI.c.o  -o cmTC_fb56a -rdynamic  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/cc]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper]
+  ignore line: [Target: x86_64-linux-gnu]
+  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 5.4.0-6ubuntu1~16.04.4' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.4) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-std=c99' '-Wall' '-Werror' '-g' '-O0' '-I' '3rd-party/build-Debug/include' '-v' '-o' 'cmTC_fb56a' '-rdynamic' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/cc3ge8jR.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_fb56a /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_fb56a.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o]
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/cc3ge8jR.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [--sysroot=/] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_fb56a] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o] ==> ignore
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/5] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib]
+    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [-L/lib/../lib] ==> dir [/lib/../lib]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/5/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../..]
+    arg [CMakeFiles/cmTC_fb56a.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/crtend.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o] ==> ignore
+  remove lib [gcc]
+  remove lib [gcc_s]
+  remove lib [gcc]
+  remove lib [gcc_s]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/5] ==> [/usr/lib/gcc/x86_64-linux-gnu/5]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib] ==> [/usr/lib]
+  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/lib/../lib] ==> [/lib]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../..] ==> [/usr/lib]
+  implicit libs: [c]
+  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/5;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+  implicit fwks: []
+
+
+
+
+Detecting C [-std=c11] compiler features compiled with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_dd0c5/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_dd0c5.dir/build.make CMakeFiles/cmTC_dd0c5.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_dd0c5.dir/feature_tests.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include     -std=c11 -o CMakeFiles/cmTC_dd0c5.dir/feature_tests.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/feature_tests.c
+Linking C executable cmTC_dd0c5
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dd0c5.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include      CMakeFiles/cmTC_dd0c5.dir/feature_tests.c.o  -o cmTC_dd0c5 -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:1c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c99] compiler features compiled with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_10c55/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_10c55.dir/build.make CMakeFiles/cmTC_10c55.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_10c55.dir/feature_tests.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include     -std=c99 -o CMakeFiles/cmTC_10c55.dir/feature_tests.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/feature_tests.c
+Linking C executable cmTC_10c55
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_10c55.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include      CMakeFiles/cmTC_10c55.dir/feature_tests.c.o  -o cmTC_10c55 -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c90] compiler features compiled with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_48431/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_48431.dir/build.make CMakeFiles/cmTC_48431.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_48431.dir/feature_tests.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include     -std=c90 -o CMakeFiles/cmTC_48431.dir/feature_tests.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/feature_tests.c
+Linking C executable cmTC_48431
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_48431.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include      CMakeFiles/cmTC_48431.dir/feature_tests.c.o  -o cmTC_48431 -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:0c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:0c_variadic_macros
+Performing C SOURCE FILE Test WITH_FPIC succeeded with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_ef13a/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_ef13a.dir/build.make CMakeFiles/cmTC_ef13a.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ef13a.dir/src.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -DWITH_FPIC   -fPIC -o CMakeFiles/cmTC_ef13a.dir/src.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_ef13a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ef13a.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -DWITH_FPIC    CMakeFiles/cmTC_ef13a.dir/src.c.o  -o cmTC_ef13a -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_VISIBILITY_HIDDEN succeeded with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_4c1b9/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_4c1b9.dir/build.make CMakeFiles/cmTC_4c1b9.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4c1b9.dir/src.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DWITH_VISIBILITY_HIDDEN   -fvisibility=hidden -o CMakeFiles/cmTC_4c1b9.dir/src.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_4c1b9
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4c1b9.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DWITH_VISIBILITY_HIDDEN    CMakeFiles/cmTC_4c1b9.dir/src.c.o  -o cmTC_4c1b9 -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Determining if the include file assert.h exists passed with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f405c/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_f405c.dir/build.make CMakeFiles/cmTC_f405c.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f405c.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE    -o CMakeFiles/cmTC_f405c.dir/CheckIncludeFile.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_f405c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f405c.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE     CMakeFiles/cmTC_f405c.dir/CheckIncludeFile.c.o  -o cmTC_f405c -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file inttypes.h exists passed with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_4b6a4/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_4b6a4.dir/build.make CMakeFiles/cmTC_4b6a4.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4b6a4.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE    -o CMakeFiles/cmTC_4b6a4.dir/CheckIncludeFile.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_4b6a4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4b6a4.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE     CMakeFiles/cmTC_4b6a4.dir/CheckIncludeFile.c.o  -o cmTC_4b6a4 -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file malloc.h exists passed with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d683c/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_d683c.dir/build.make CMakeFiles/cmTC_d683c.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d683c.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE    -o CMakeFiles/cmTC_d683c.dir/CheckIncludeFile.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_d683c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d683c.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE     CMakeFiles/cmTC_d683c.dir/CheckIncludeFile.c.o  -o cmTC_d683c -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file memory.h exists passed with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_747b3/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_747b3.dir/build.make CMakeFiles/cmTC_747b3.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_747b3.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE    -o CMakeFiles/cmTC_747b3.dir/CheckIncludeFile.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_747b3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_747b3.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE     CMakeFiles/cmTC_747b3.dir/CheckIncludeFile.c.o  -o cmTC_747b3 -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file setjmp.h exists passed with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_c9d23/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_c9d23.dir/build.make CMakeFiles/cmTC_c9d23.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c9d23.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE    -o CMakeFiles/cmTC_c9d23.dir/CheckIncludeFile.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_c9d23
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c9d23.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE     CMakeFiles/cmTC_c9d23.dir/CheckIncludeFile.c.o  -o cmTC_c9d23 -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file signal.h exists passed with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_591c2/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_591c2.dir/build.make CMakeFiles/cmTC_591c2.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_591c2.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE    -o CMakeFiles/cmTC_591c2.dir/CheckIncludeFile.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_591c2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_591c2.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE     CMakeFiles/cmTC_591c2.dir/CheckIncludeFile.c.o  -o cmTC_591c2 -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stdarg.h exists passed with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_14004/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_14004.dir/build.make CMakeFiles/cmTC_14004.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_14004.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE    -o CMakeFiles/cmTC_14004.dir/CheckIncludeFile.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_14004
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_14004.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE     CMakeFiles/cmTC_14004.dir/CheckIncludeFile.c.o  -o cmTC_14004 -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_31e8d/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_31e8d.dir/build.make CMakeFiles/cmTC_31e8d.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_31e8d.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE    -o CMakeFiles/cmTC_31e8d.dir/CheckIncludeFile.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_31e8d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_31e8d.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE     CMakeFiles/cmTC_31e8d.dir/CheckIncludeFile.c.o  -o cmTC_31e8d -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_6b21a/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_6b21a.dir/build.make CMakeFiles/cmTC_6b21a.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6b21a.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE    -o CMakeFiles/cmTC_6b21a.dir/CheckIncludeFile.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_6b21a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6b21a.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE     CMakeFiles/cmTC_6b21a.dir/CheckIncludeFile.c.o  -o cmTC_6b21a -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stdio.h exists passed with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a8419/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_a8419.dir/build.make CMakeFiles/cmTC_a8419.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a8419.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE    -o CMakeFiles/cmTC_a8419.dir/CheckIncludeFile.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_a8419
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a8419.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE     CMakeFiles/cmTC_a8419.dir/CheckIncludeFile.c.o  -o cmTC_a8419 -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stdlib.h exists passed with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_6cf75/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_6cf75.dir/build.make CMakeFiles/cmTC_6cf75.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6cf75.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE    -o CMakeFiles/cmTC_6cf75.dir/CheckIncludeFile.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_6cf75
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6cf75.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE     CMakeFiles/cmTC_6cf75.dir/CheckIncludeFile.c.o  -o cmTC_6cf75 -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file string.h exists passed with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_9bfad/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_9bfad.dir/build.make CMakeFiles/cmTC_9bfad.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9bfad.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE    -o CMakeFiles/cmTC_9bfad.dir/CheckIncludeFile.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_9bfad
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9bfad.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE     CMakeFiles/cmTC_9bfad.dir/CheckIncludeFile.c.o  -o cmTC_9bfad -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file strings.h exists passed with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_e0851/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_e0851.dir/build.make CMakeFiles/cmTC_e0851.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e0851.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE    -o CMakeFiles/cmTC_e0851.dir/CheckIncludeFile.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_e0851
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e0851.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE     CMakeFiles/cmTC_e0851.dir/CheckIncludeFile.c.o  -o cmTC_e0851 -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file sys/stat.h exists passed with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_5614f/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_5614f.dir/build.make CMakeFiles/cmTC_5614f.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5614f.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE    -o CMakeFiles/cmTC_5614f.dir/CheckIncludeFile.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_5614f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5614f.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE     CMakeFiles/cmTC_5614f.dir/CheckIncludeFile.c.o  -o cmTC_5614f -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_56983/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_56983.dir/build.make CMakeFiles/cmTC_56983.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_56983.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE    -o CMakeFiles/cmTC_56983.dir/CheckIncludeFile.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_56983
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_56983.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE     CMakeFiles/cmTC_56983.dir/CheckIncludeFile.c.o  -o cmTC_56983 -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file time.h exists passed with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_e1b7a/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_e1b7a.dir/build.make CMakeFiles/cmTC_e1b7a.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e1b7a.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE    -o CMakeFiles/cmTC_e1b7a.dir/CheckIncludeFile.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_e1b7a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e1b7a.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE     CMakeFiles/cmTC_e1b7a.dir/CheckIncludeFile.c.o  -o cmTC_e1b7a -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file unistd.h exists passed with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_c0555/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_c0555.dir/build.make CMakeFiles/cmTC_c0555.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c0555.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE    -o CMakeFiles/cmTC_c0555.dir/CheckIncludeFile.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_c0555
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c0555.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE     CMakeFiles/cmTC_c0555.dir/CheckIncludeFile.c.o  -o cmTC_c0555 -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Performing C SOURCE FILE Test HAVE_STRUCT_TIMESPEC succeeded with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_0f844/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_0f844.dir/build.make CMakeFiles/cmTC_0f844.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0f844.dir/src.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DHAVE_STRUCT_TIMESPEC   -o CMakeFiles/cmTC_0f844.dir/src.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_0f844
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0f844.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DHAVE_STRUCT_TIMESPEC    CMakeFiles/cmTC_0f844.dir/src.c.o  -o cmTC_0f844 -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <time.h>
+
+int main()
+{
+   (void)sizeof(((struct timespec *)0)->tv_sec);
+   return 0;
+}
+
+Determining if the function longjmp exists passed with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_ac4b1/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_ac4b1.dir/build.make CMakeFiles/cmTC_ac4b1.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ac4b1.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DCHECK_FUNCTION_EXISTS=longjmp   -o CMakeFiles/cmTC_ac4b1.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_ac4b1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ac4b1.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DCHECK_FUNCTION_EXISTS=longjmp    CMakeFiles/cmTC_ac4b1.dir/CheckFunctionExists.c.o  -o cmTC_ac4b1 -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the function siglongjmp exists passed with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f3cd0/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_f3cd0.dir/build.make CMakeFiles/cmTC_f3cd0.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f3cd0.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DCHECK_FUNCTION_EXISTS=siglongjmp   -o CMakeFiles/cmTC_f3cd0.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_f3cd0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f3cd0.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DCHECK_FUNCTION_EXISTS=siglongjmp    CMakeFiles/cmTC_f3cd0.dir/CheckFunctionExists.c.o  -o cmTC_f3cd0 -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the function setjmp exists passed with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b6b9d/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_b6b9d.dir/build.make CMakeFiles/cmTC_b6b9d.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b6b9d.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DCHECK_FUNCTION_EXISTS=setjmp   -o CMakeFiles/cmTC_b6b9d.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_b6b9d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b6b9d.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DCHECK_FUNCTION_EXISTS=setjmp    CMakeFiles/cmTC_b6b9d.dir/CheckFunctionExists.c.o  -o cmTC_b6b9d -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the function signal exists passed with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_9f61e/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_9f61e.dir/build.make CMakeFiles/cmTC_9f61e.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9f61e.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DCHECK_FUNCTION_EXISTS=signal   -o CMakeFiles/cmTC_9f61e.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_9f61e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9f61e.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DCHECK_FUNCTION_EXISTS=signal    CMakeFiles/cmTC_9f61e.dir/CheckFunctionExists.c.o  -o cmTC_9f61e -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strsignal exists passed with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a32a9/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_a32a9.dir/build.make CMakeFiles/cmTC_a32a9.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a32a9.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DCHECK_FUNCTION_EXISTS=strsignal   -o CMakeFiles/cmTC_a32a9.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_a32a9
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a32a9.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DCHECK_FUNCTION_EXISTS=strsignal    CMakeFiles/cmTC_a32a9.dir/CheckFunctionExists.c.o  -o cmTC_a32a9 -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Determining if the function clock_gettime exists passed with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b3430/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_b3430.dir/build.make CMakeFiles/cmTC_b3430.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b3430.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DCHECK_FUNCTION_EXISTS=clock_gettime   -o CMakeFiles/cmTC_b3430.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_b3430
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b3430.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DCHECK_FUNCTION_EXISTS=clock_gettime    CMakeFiles/cmTC_b3430.dir/CheckFunctionExists.c.o  -o cmTC_b3430 -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+
+Performing C SOURCE FILE Test HAVE_GCC_THREAD_LOCAL_STORAGE succeeded with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_babc5/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_babc5.dir/build.make CMakeFiles/cmTC_babc5.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_babc5.dir/src.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DHAVE_GCC_THREAD_LOCAL_STORAGE   -o CMakeFiles/cmTC_babc5.dir/src.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_babc5
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_babc5.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DHAVE_GCC_THREAD_LOCAL_STORAGE    CMakeFiles/cmTC_babc5.dir/src.c.o  -o cmTC_babc5 -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+__thread int tls;
+
+int main(void) {
+    return 0;
+}
+Performing C SOURCE FILE Test HAVE_CLOCK_GETTIME_REALTIME succeeded with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_126cb/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_126cb.dir/build.make CMakeFiles/cmTC_126cb.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_126cb.dir/src.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DHAVE_CLOCK_GETTIME_REALTIME   -o CMakeFiles/cmTC_126cb.dir/src.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_126cb
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_126cb.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DHAVE_CLOCK_GETTIME_REALTIME    CMakeFiles/cmTC_126cb.dir/src.c.o  -o cmTC_126cb -rdynamic /usr/lib/x86_64-linux-gnu/librt.so 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <time.h>
+
+int main(void) {
+    struct timespec ts;
+
+    clock_gettime(CLOCK_REALTIME, &ts);
+
+    return 0;
+}
+Determining size of unsigned short passed with the following output:
+Change Dir: /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_60c9d/fast"
+make[2]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_60c9d.dir/build.make CMakeFiles/cmTC_60c9d.dir/build
+make[3]: Entering directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_60c9d.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o
+/usr/bin/cc    -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE    -o CMakeFiles/cmTC_60c9d.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o   -c /home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CheckTypeSize/CMAKE_SIZEOF_UNSIGNED_SHORT.c
+Linking C executable cmTC_60c9d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_60c9d.dir/link.txt --verbose=1
+/usr/bin/cc  -std=c99 -Wall -Werror -g -O0 -I 3rd-party/build-Debug/include  -std=gnu99 -pedantic -pedantic-errors -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wundef -fPIC -D_GNU_SOURCE -D_LARGEFILE64_SOURCE     CMakeFiles/cmTC_60c9d.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o  -o cmTC_60c9d -rdynamic 
+make[3]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/cmocka/CMakeFiles/CMakeTmp'
+
+

@@ -1,0 +1,6 @@
+Name: cmocka
+Description: The cmocka unit testing library
+Version: 1.1.0
+Libs: -L/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/lib -lcmocka
+Cflags: -I/home/vishalvishnani/Circular_Buffer/unit_tests/3rd-party/build-Debug/include
+
