@@ -1,0 +1,33 @@
+ECEN 5013 - ADVANCED EMBEDDED SOFTWARE - Unit Test for Circular Buffer and Double Linked List
+
+
+Author: Vishal Vishnani
+
+
+Date: 9/19/2017
+
+
+File Structure:
+
+  1. 3rd-party - Consists of libraries required to run cmocka framework
+  1. CB.h - Header file for circular buffer
+  2. CB.c - Source file for circular buffer
+  3. DLL.c - Header file for Double linked list
+  4. DLL.h - Source file for Double Linked list
+  5. test_circbuff.c - Source file for circular buffer unit test functions
+  6. test_DLL.c - Source file for double linked list unit test functions
+  7. main.c - main source file for running the code
+  8. Makefile - Used to make executable
+
+
+Execution:
+
+  1. Circular Buffer
+       Command: make test TEST=CB
+       Executable File: test_CB.out
+
+  2. Double Linked List:
+       Command: make test TEST=DLL
+       Executable File: test_DLL.out
+
+
