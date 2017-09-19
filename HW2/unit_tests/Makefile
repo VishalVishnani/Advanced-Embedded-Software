@@ -93,7 +93,7 @@ $(TEST_EXE) : $(TEST_SRCS) $(LIB)
 
 .PHONY : clean
 clean : FORCE
-	-rm -rf *~ *.o $(LIB) $(EXE) $(TEST_QUADRATIC_EXE) *.dSYM/ *.out
+	-rm -rf *~ *.o $(LIB) $(EXE) $(TEST_EXE) *.dSYM/ *.out
 
 .PHONY : clobber
 clobber : $(SUBDIRS) clean
