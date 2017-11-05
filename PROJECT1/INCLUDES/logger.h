@@ -6,7 +6,8 @@
 typedef enum check_level{
   INFO=0,
   ERROR,
-  SENSOR_VALUE
+  SENSOR_VALUE,
+  ALERT
 }level;
 
 
@@ -24,7 +25,8 @@ typedef struct log_packet{
   level log_level;
   task_id log_id;
   uint8_t *timestamp;
-  uint8_t* log_message;
+  uint8_t log_message[100];
+  char data[100];
 }log;
 
 

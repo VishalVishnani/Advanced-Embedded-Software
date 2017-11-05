@@ -13,6 +13,7 @@
 #define QUEUE_TEMP_R "/tempqueue2"
 #define QUEUE_LIGHT_R "/lightqueue2"
 #define QUEUE_MAIN "/mainqueue"
+#define QUEUE_DECISION "/decisionqueue"
 #define FLAG (O_RDWR | O_CREAT)
 
 
@@ -35,6 +36,8 @@ mqd_t mqdes_light_r;
 struct mq_attr attr_main;
 mqd_t mqdes_main;
 
+struct mq_attr attr_decision;
+mqd_t mqdes_decision;
 
 void initialize_queues(void);
 

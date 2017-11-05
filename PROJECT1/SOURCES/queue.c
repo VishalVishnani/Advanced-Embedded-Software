@@ -23,6 +23,10 @@ void initialize_queues(void){
   attr_main.mq_msgsize=sizeof(log);
   attr_main.mq_flags=0;
 
+  attr_decision.mq_maxmsg=NO_OF_MSG;
+  attr_decision.mq_msgsize=sizeof(log);
+  attr_decision.mq_flags=0;
+
   mq_unlink(QUEUE_TEMP_W);
   mq_unlink(QUEUE_LIGHT_W);
 
@@ -30,6 +34,7 @@ void initialize_queues(void){
   mq_unlink(QUEUE_LIGHT_R);
 
   mq_unlink(QUEUE_MAIN);
+  mq_unlink(QUEUE_DECISION);
 
   mqdes_temp_w=mq_open(QUEUE_TEMP_W, FLAG, 0644, &attr_temp_w);
 
@@ -66,6 +71,14 @@ void initialize_queues(void){
     exit(1);
   }
 
+  mqdes_decision=mq_open(QUEUE_DECISION, FLAG, 0644, &attr_decision);
+
+  if(mqdes_decision==-1){
+    printf("\nError mq_open decision\n");
+    exit(1);
+  }
+
+
   mq_getattr(mqdes_temp_w,&attr_temp_w);
   mq_getattr(mqdes_light_w,&attr_light_w);
 
@@ -73,5 +86,6 @@ void initialize_queues(void){
   mq_getattr(mqdes_light_r,&attr_light_r);
 
   mq_getattr(mqdes_main,&attr_main);
+  mq_getattr(mqdes_decision,&attr_decision);
 
 }
