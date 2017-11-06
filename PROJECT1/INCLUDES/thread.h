@@ -11,10 +11,14 @@
 #include <string.h>
 
 sig_atomic_t cond_type;
+sig_atomic_t cond_type_temp;
+sig_atomic_t cond_type_light;
 sig_atomic_t destroy_all;
 sig_atomic_t count_exit;
 sig_atomic_t check_alive;
-
+sig_atomic_t asynctemp_to_light;
+sig_atomic_t asynclight_to_temp;
+sig_atomic_t asyncmain_to_light;
 
 uint8_t file_open[50];
 

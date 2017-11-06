@@ -5,9 +5,13 @@
 #include <sys/time.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include "logger.h"
 
 
 void *func4(void* t){
+  char logger_level[4][15]={"INFO","ERROR","SENSOR_VALUE","ALERT"};
+  char task_no[5][15]={"MAIN_TASK","TEMP_TASK","LIGHT_TASK","LOGGER_TASK","DECISION_TASK"};
+
   log packet_recv_decision;
   log main_log_packet;
   uint32_t count_decision=0;
@@ -28,7 +32,6 @@ void *func4(void* t){
 
     mq_getattr(mqdes_decision,&attr_decision);
     count_decision=attr_decision.mq_curmsgs;
-    printf("\nMessages currently on the decision queue %ld\n",attr_decision.mq_curmsgs);
   
     while(count_decision){
       n=mq_receive(mqdes_decision,(int8_t*)&packet_recv_decision,4096,NULL);
@@ -36,10 +39,9 @@ void *func4(void* t){
       float val=0;
       val=atof(packet_recv_decision.data);
 
-//      printf("\n\nDECISION LOD ID  %d  DATA  %f \n\n",packet_recv_decision.log_id,val);
 
       if(packet_recv_decision.log_id==1){
-        if(val>1800){
+        if(val>50){
           main_log_packet.log_level=ALERT;
           main_log_packet.log_id=DECISION_TASK;
           curtime=time(NULL);
@@ -48,7 +50,7 @@ void *func4(void* t){
           strcpy(main_log_packet.log_message,"ALERT TEMPERATURE EXCEEDED");
        
        }
-       else if(val <500){
+       else if(val <0){
          main_log_packet.log_level=ALERT;
          main_log_packet.log_id=DECISION_TASK;
          curtime=time(NULL);
@@ -60,7 +62,7 @@ void *func4(void* t){
      }
 
      else if(packet_recv_decision.log_id==2){
-       if(val>1800){
+       if(val>5000){
           main_log_packet.log_level=ALERT;
           main_log_packet.log_id=DECISION_TASK;
           curtime=time(NULL);

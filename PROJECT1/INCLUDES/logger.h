@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+
+
 typedef enum check_level{
   INFO=0,
   ERROR,
@@ -35,9 +37,14 @@ typedef struct log_req{
   task_id src_id;
   task_id dst_id;
   uint8_t* timestamp;
-  uint8_t* message;
+  uint8_t command;
+  uint8_t delay;
 }request_log;
 
+/*
+char logger_level[4][15]={"INFO","ERROR","SENSOR_VALUE","ALERT"};
+char task_no[5][15]={"MAIN_TASK","TEMP_TASK","LIGHT_TASK","LOGGER_TASK","DECISION_TASK"};
+*/
 
 #endif
 

@@ -11,21 +11,31 @@
 #include "timer.h"
 #include "queue.h"
 #include "thread.h"
+#include "i2c.h"
 
-
-
+#define I2C_NUM (2)
 
 void timer_handler(int signum){
   cond_type=1;
-  pthread_cond_broadcast(&timer_expire_temp);
-  pthread_cond_broadcast(&timer_expire_light);
-  
+  static int temp_counter=0;
+  static int light_counter=0;
+  temp_counter++;
+  light_counter++;
+
+  if(temp_counter==temp_timer_count){
+    pthread_cond_broadcast(&timer_expire_temp);
+    temp_counter=0;
+  }
+
+  if(light_counter==light_timer_count){
+    pthread_cond_broadcast(&timer_expire_light);
+    light_counter=0;
+  }
 }
                 
 
 
 void siginthandler( ){
- // destroy_all=1;
   printf("\nIn SIGINT handler\n");
   log sig_log_packet;
 
@@ -36,17 +46,12 @@ void siginthandler( ){
   strcpy(sig_log_packet.data,"-");
 
   strcpy(sig_log_packet.log_message,"EXIT GRACEFULLY");
-  pthread_mutex_lock(&main_queue_lock);
- // pthread_cond_broadcast(&heartbeat_temp);
-  //pthread_cond_broadcast(&heartbeat_light);
-  //pthread_cond_broadcast(&heartbeat_logger);
+ 
  
   if(mq_send(mqdes_main,(const int8_t*)&sig_log_packet,sizeof(sig_log_packet),0)==-1){
     printf("\nError in mq_send main\n");
     exit(1);
   }
- // printf("\nMESSAGE SENT\n");
-  pthread_mutex_unlock(&main_queue_lock);
   
   usleep(10000);
   destroy_all=1;
@@ -59,25 +64,23 @@ void siginthandler( ){
 
 void sighandler1(int signum){
   printf("\nIn SIGHANDLER for USR1\n");
-  cond_type=2;
-  request_log* temp_query=(request_log*)malloc(sizeof(temp_query));
-  temp_query->src_id=0;
-  temp_query->dst_id=1;
+  printf("\nTemp task will  Query to light\n");
+
+  request_log light_query;
+  light_query.src_id=TEMP_TASK;
+  light_query.dst_id=LIGHT_TASK;
   time_t curtime=time(NULL);
-  temp_query->timestamp=ctime(&curtime);
-  char buffer[]="GET_TEMP";
-  temp_query->message=buffer;
- 
-  pthread_mutex_lock(&temp_w_lock);
-  
-  if(mq_send(mqdes_temp_r,(const int8_t*)&temp_query,sizeof(temp_query),0)==-1){
-    printf("\nError in mq_send temp_query\n");
+  light_query.timestamp=ctime(&curtime);
+  light_query.command='d';
+  light_query.delay=3;
+
+  if(mq_send(mqdes_light_r,(const int8_t*)&light_query,sizeof(light_query),0)==-1){
+    printf("\nError in mq_send light_query\n");
     exit(1);
   }
- 
-  pthread_mutex_unlock(&temp_w_lock);
 
-  //pthread_cond_broadcast(&timer_expire);
+  cond_type_light=2;
+
 
 }
 
@@ -85,72 +88,63 @@ void sighandler1(int signum){
 
 void sighandler2(int signum){
   printf("\nIn SIGHANDLER for USR2\n");
-  cond_type=3;
+  printf("\nLight thread will query temperature thread\n");
 
-  request_log* light_query=(request_log*)malloc(sizeof(light_query));
-  light_query->src_id=0;
-  light_query->dst_id=2;
+  request_log temp_query;
+  temp_query.src_id=LIGHT_TASK;
+  temp_query.dst_id=TEMP_TASK;
   time_t curtime=time(NULL);
-  light_query->timestamp=ctime(&curtime);
-  char buffer[]="GET_LIGHT";
-  light_query->message=buffer;
+  temp_query.timestamp=ctime(&curtime);
+  temp_query.command='d';
+  temp_query.delay=5;
 
-  pthread_mutex_lock(&light_w_lock);
+  if(mq_send(mqdes_temp_r,(const int8_t*)&temp_query,sizeof(temp_query),0)==-1){
+   printf("\nError in mq_send temp_query\n");
+   exit(1);
+}
 
-  if(mq_send(mqdes_light_r,(const int8_t*)&light_query,sizeof(light_query),0)==-1){
-    printf("\nError in mq_send light_query\n");
-    exit(1);
-  }
-
-  pthread_mutex_unlock(&light_w_lock);
-
-  //pthread_cond_broadcast(&timer_expire);
-
+   cond_type_temp=2;
 }
 
 
 
 int main(int argc,char* argv[]){
+  temp_timer_count=1;
+  light_timer_count=2;
+
   char file_name[100] = "log.txt";
   char path_name[100];
   char *path = getenv("PWD");
   strcpy(path_name,path);
-
-  char c;
-  while((c = getopt(argc,argv,"f:p:")) != -1)
-  {
-    switch(c)
-    {
-      case 'f':
-        memset(file_name,0,100);
-        strcpy(file_name,optarg);
-        break;
-
-      case 'p':
-        memset(path_name,0,100);
-        strcpy(path_name,optarg);
-        break;
-
-      case '?':
-        printf("\nWrong arguments given!!!\n");
-        exit(1);
-
-      default:
-        exit(1);
-    }
-
+   
+  if (argc == 3)
+  { 
+   strcpy(file_name,argv[1]);
+   strcpy(path_name,argv[2]);
+	
   }
-
+  else if(argc == 2)
+  { 
+   strcpy(file_name,argv[1]);
+  }
+  else if(argc > 3)
+  {
+     printf("\nTOOOO MANY ARGUMENTS\n");
+  }
+  
   strcat(path_name,"/");
   strcat(file_open,path_name);
   strcat(file_open,file_name);
 
+  printf("\nFile with path %s\n",file_open);
+  
   //if file already exists remove
   remove(file_open);
-  
+ 
 
   initialize_queues();
 
+  printf("\nQueue intialize\n");
   int8_t ret=1;
 
   pthread_initialize();
@@ -184,6 +178,27 @@ int main(int argc,char* argv[]){
   while(1){
     heartbeat_timer=heartbeat_init(3,4000000);
 
+    asyncmain_to_light++;
+
+    if(asyncmain_to_light==20){
+
+      request_log light_query;
+      light_query.src_id=MAIN_TASK;
+      light_query.dst_id=LIGHT_TASK;
+      curtime=time(NULL);
+      light_query.timestamp=ctime(&curtime);
+      light_query.command='d';
+      light_query.delay=2;
+
+      if(mq_send(mqdes_light_r,(const int8_t*)&light_query,sizeof(light_query),0)==-1){
+        printf("\nError in mq_send light_query from main\n");
+        exit(1);
+      }
+
+      cond_type_light=2;
+    }
+
+
     if(destroy_all==1){
       pthread_cond_broadcast(&timer_expire_temp);
       pthread_cond_broadcast(&timer_expire_light);
@@ -204,7 +219,6 @@ int main(int argc,char* argv[]){
     }
 
     if(ret1==0){
-      printf("\nTemp thread is working\n");
     }
     else{
       printf("\nTemp thread not working\n");
@@ -243,7 +257,6 @@ int main(int argc,char* argv[]){
     }
 
     if(ret1==0){
-      printf("\nLight thread is working\n");
     }
     else{
       printf("\nLight thread not working\n");
@@ -284,27 +297,10 @@ int main(int argc,char* argv[]){
     }
 
     if(ret1==0){
-      printf("\nlogger thread is working\n");
     }
     else{
       printf("\nLogger thread not working\n");
-
-      main_log_packet.log_level=ERROR;
-      main_log_packet.log_id=MAIN_TASK;
-      curtime=time(NULL);
-      main_log_packet.timestamp=ctime(&curtime);
-      strcpy(main_log_packet.data,"-");
-      strcpy(main_log_packet.log_message,"LOGGER THREAD STUCK");
-      pthread_mutex_lock(&main_queue_lock);
-
-      if(mq_send(mqdes_main,(const int8_t*)&main_log_packet,sizeof(main_log_packet),0)==-1){
-        printf("\nError in mq_send main\n");
-        exit(1);
-      }
-
-      pthread_mutex_unlock(&main_queue_lock);
-
-
+    
       siginthandler();
       continue;
     }
@@ -322,7 +318,6 @@ int main(int argc,char* argv[]){
     }
 
     if(ret1==0){
-      printf("\nDecision thread is working\n");
     }
     else{
       printf("\nDecision thread not working\n");

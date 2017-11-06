@@ -8,6 +8,8 @@
 struct sigaction sa;
 struct itimerval timer;
 
+sig_atomic_t temp_timer_count;
+sig_atomic_t light_timer_count;
 
 void timer_init(void);
 struct timespec heartbeat_init(uint32_t sec_value,uint32_t nsec_value);

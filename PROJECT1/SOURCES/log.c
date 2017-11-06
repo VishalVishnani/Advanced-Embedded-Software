@@ -5,11 +5,13 @@
 #include <sys/time.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include "logger.h"
 
 void *func3(void* t){
 
   char logger_level[4][15]={"INFO","ERROR","SENSOR_VALUE","ALERT"};
   char task_no[5][15]={"MAIN_TASK","TEMP_TASK","LIGHT_TASK","LOGGER_TASK","DECISION_TASK"};
+
   char logger_level_write[15]={'\0'};
   char task_write[15]={'\0'};
   char buffer[300]={'\0'};
@@ -34,7 +36,6 @@ void *func3(void* t){
 
       mq_getattr(mqdes_temp_w,&attr_temp_w);
       count_msg_temp=attr_temp_w.mq_curmsgs;
-      printf("\nMessages currently on the temp_w queue %ld\n",attr_temp_w.mq_curmsgs);
 
       while(count_msg_temp){
         n=mq_receive(mqdes_temp_w,(int8_t*)&packet_recv_temp,4096,NULL);
@@ -52,7 +53,6 @@ void *func3(void* t){
         fwrite(buffer,1,strlen(buffer),fd);
         fclose(fd);
 
-        printf("%s\n",buffer);
 
         memset(logger_level_write,'\0',sizeof(logger_level_write));
         memset(task_write,'\0',sizeof(task_write));
@@ -76,7 +76,6 @@ void *func3(void* t){
     
       mq_getattr(mqdes_light_w,&attr_light_w);
       count_msg_light=attr_light_w.mq_curmsgs;
-      printf("\nMessages currently on the light queue_w %ld\n",attr_light_w.mq_curmsgs);
 
       while(count_msg_light){
         n=mq_receive(mqdes_light_w,(int8_t*)&packet_recv_light,4096,NULL);
@@ -94,7 +93,6 @@ void *func3(void* t){
         fwrite(buffer,1,strlen(buffer),fd);
         fclose(fd);
 
-        printf("%s\n",buffer);
         memset(logger_level_write,'\0',sizeof(logger_level_write));
         memset(task_write,'\0',sizeof(task_write));
         memset(buffer,'\0',sizeof(buffer));
@@ -117,7 +115,6 @@ void *func3(void* t){
     
       mq_getattr(mqdes_main,&attr_main);
       count_main=attr_main.mq_curmsgs;
-      printf("\nMessages currently on the main queue %ld\n",attr_main.mq_curmsgs);
       while(count_main){
         n=mq_receive(mqdes_main,(int8_t*)&packet_recv_main,4096,NULL);
         
@@ -126,7 +123,6 @@ void *func3(void* t){
         strcpy(task_write, task_no[packet_recv_main.log_id]);
         sprintf(buffer,"\n\nLOG LEVEL    %s\nTASK ID      %s\nTIMESTAMP    %sLOG MESSAGE  %s\nLOG DATA    %s\n\n",logger_level_write,task_write,packet_recv_main.timestamp,packet_recv_main.log_message,packet_recv_main.data);
        
-        printf("%s\n",buffer);
         FILE* fd=fopen(file_open,"a+");
         if(fd==NULL){
           printf("\nERROR: file open failed\n");

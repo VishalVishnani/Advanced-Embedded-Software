@@ -6,7 +6,10 @@
 #include "timer.h"
 
 
+
+
 void timer_handler(int signum);
+
 
 void timer_init(void){
 

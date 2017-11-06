@@ -5,12 +5,24 @@
 #include <sys/time.h>
 #include <unistd.h>
 #include <stdlib.h>
-
+#include "logger.h"
+#include "timer.h"
+#include "i2c.h"
+#include "i2c_light.h"
 
 void *func2(void* t){
 
+  int8_t filename1[20];
+  int32_t file1;
+  snprintf(filename1,19,"/dev/i2c-%d",I2C_NUM);
+  file1=setup_i2c(filename1,(uint8_t)DEV_ADDR_LIGHT);
+
+  char logger_level[4][15]={"INFO","ERROR","SENSOR_VALUE","ALERT"};
+  char task_no[5][15]={"MAIN_TASK","TEMP_TASK","LIGHT_TASK","LOGGER_TASK","DECISION_TASK"};
+
   log packet_light;
   request_log req_light;
+  log packet_light_async;
   int8_t ret=-1;
 
   time_t curtime=time(NULL);
@@ -18,13 +30,14 @@ void *func2(void* t){
 
   while(1){
     pthread_cond_broadcast(&heartbeat_light);
-    check_alive++; //enable it to check alive timer
 
-    if(check_alive==22){
+
+    if(check_alive==40){
       pthread_cancel(threads[1]);
     }
+      
 
-   if(destroy_all==1){
+    if(destroy_all==1){
       break;
     }
 
@@ -47,34 +60,64 @@ void *func2(void* t){
       continue;
     }
 
-    if(cond_type==3){
+    if(cond_type_light==2){
       printf("\n----------------ASYNC QUERY FOR LIGHT----------------------\n");
       mq_getattr(mqdes_light_r,&attr_light_r);
       count_req=attr_light_r.mq_curmsgs;
-      printf("\nMessages currently on the light_r queue %ld\n",attr_light_r.mq_curmsgs);
 
       while(count_req){
+
         int n;
         n=mq_receive(mqdes_light_r,(int8_t*)&req_light,4096,NULL);
 
-        printf("\n\nSRC_ID = %d\n",req_light.src_id);
-        printf("\nDST_ID = %d\n",req_light.dst_id);
-        printf("\nTIMESTAMP = %s\n",req_light.timestamp);
-        printf("\nMESSAGE = %s\n\n",req_light.message);
+        packet_light_async.log_level=INFO;
+        packet_light_async.log_id=LIGHT_TASK;
+ 
+//        light_write_read_control_register(file1,(uint8_t)POWER_UP,1);
+        uint16_t sensor_value_light=light_read_sensor_data_value(file1);
+
+        float data= (float)sensor_value_light;
+  
+
+       if(req_light.command=='d'){
+        sprintf(packet_light_async.log_message,"LIGHT DATA TIMER CHANGED TO %d  BY %s",req_light.delay,task_no[req_light.src_id]);
+        packet_light_async.timestamp=ctime(&curtime);
+        sprintf(packet_light_async.data,"%f",data);
+        light_timer_count=req_light.delay;
+
+      }
+      else{
+        sprintf(packet_light_async.log_message,"LIGHT DATA QUERIED BY %s",task_no[req_light.src_id]);
+        packet_light_async.timestamp=ctime(&curtime);
+        sprintf(packet_light_async.data,"%f",data);
+
+
+       }
+
+       if(mq_send(mqdes_light_w,(const int8_t*)&packet_light_async,sizeof(packet_light_async),0)==-1){
+        printf("\nError in mq_send light\n");
+        exit(1);
+      }
 
 
         mq_getattr(mqdes_light_r,&attr_light_r);
         count_req=attr_light_r.mq_curmsgs;
       }
-
+      cond_type_light=0;
     }
 
 
     else if(cond_type==1){
-      printf("\nWriting data in light queue_w\n");
       strcpy(packet_light.log_message,"LIGHT");
       packet_light.timestamp=ctime(&curtime);
-      float data= (float)rand()/1000000;
+
+
+  //    light_write_read_control_register(file1,(uint8_t)POWER_UP,1);
+      uint16_t sensor_value_light=light_read_sensor_data_value(file1);
+
+      float data= (float)sensor_value_light;
+
+
       sprintf(packet_light.data,"%f",data);
 
       if(mq_send(mqdes_light_w,(const int8_t*)&packet_light,sizeof(packet_light),0)==-1){

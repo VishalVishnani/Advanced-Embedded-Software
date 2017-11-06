@@ -1,15 +1,29 @@
 #include "thread.h"
+#include "logger.h"
 #include <stdio.h>
 #include <stdint.h>
 #include <time.h>
 #include <sys/time.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include "timer.h"
+#include "i2c.h"
+#include "i2c_temp.h"
 
 void *func1(void* t){
 
+  int8_t filename[20];
+  int32_t file;
+  snprintf(filename,19,"/dev/i2c-%d",I2C_NUM);
+  file=setup_i2c(filename,(uint8_t)DEV_ADDR_TEMP);
+
+
+  char logger_level[4][15]={"INFO","ERROR","SENSOR_VALUE","ALERT"};
+  char task_no[5][15]={"MAIN_TASK","TEMP_TASK","LIGHT_TASK","LOGGER_TASK","DECISION_TASK"};
+
   log packet_temp;
   request_log req_temp;
+  log packet_temp_async;
 
   int8_t ret=-1;
 
@@ -19,7 +33,7 @@ void *func1(void* t){
 
   while(1){
 
-   pthread_cond_broadcast(&heartbeat_temp);
+    pthread_cond_broadcast(&heartbeat_temp);
 
     if(destroy_all==1){
       break;
@@ -47,11 +61,10 @@ void *func1(void* t){
     }
 
 	
-    if(cond_type==2){
-      printf("\n----------------ASYNC QUERY FOR TEMP---------------\n");
+    if(cond_type_temp==2){
+      printf("\n--------------------------ASYNC QUERY FOR TEMP----------------------------\n");
       mq_getattr(mqdes_temp_r,&attr_temp_r);
       count_req=attr_temp_r.mq_curmsgs;
-      printf("\nMessages currently on the temp_r queue %ld\n",attr_temp_r.mq_curmsgs);
 
       while(count_req){
         int n;
@@ -60,24 +73,81 @@ void *func1(void* t){
           printf("\nNo message\n");
         }
 
-        printf("\n\nSRC_ID = %d\n",req_temp.src_id);
-        printf("\nDST_ID = %d\n",req_temp.dst_id);
-        printf("\nTIMESTAMP = %s\n",req_temp.timestamp);
-        printf("\nMESSAGE = %s\n\n",req_temp.message);
+        packet_temp_async.log_level=INFO;
+        packet_temp_async.log_id=TEMP_TASK;
+    
+        int16_t temp_data=read_temperature(file,(uint8_t)TEMP_REG);
+        
+        float data;
+        int8_t sign=1;
+
+        if(temp_data > 0x800){
+          temp_data=~temp_data;
+          temp_data &=0x0FFF;
+          temp_data=temp_data + 0x01;    
+          sign=-1;
+        }
+
+        data=temp_data*(0.0625)*sign;
+      
+
+        if(req_temp.command=='k'){
+        sprintf(packet_temp_async.log_message,"TEMPERATURE DATA IN KELVIN QUERIED BY %s",task_no[req_temp.src_id]);
+        packet_temp_async.timestamp=ctime(&curtime);
+        sprintf(packet_temp_async.data,"%f",data);
+      }
+
+      else if(req_temp.command=='f'){
+        sprintf(packet_temp_async.log_message,"TEMPERATURE DATA IN FAHRENHEIT QUERIED BY %s",task_no[req_temp.src_id]);
+        packet_temp_async.timestamp=ctime(&curtime);
+        sprintf(packet_temp_async.data,"%f",data);
+      }
+
+      else if(req_temp.command=='d'){
+        sprintf(packet_temp_async.log_message,"TEMPERATURE DATA TIMER DELAYED BY %d BY %s",req_temp.delay,task_no[req_temp.src_id]);
+        packet_temp_async.timestamp=ctime(&curtime);
+        sprintf(packet_temp_async.data,"%f",data);
+        temp_timer_count=req_temp.delay;
+      }
+
+      else{
+        sprintf(packet_temp_async.log_message,"TEMPERATURE DATA IN CELSIUS QUERIED BY %s",task_no[req_temp.src_id]);
+        packet_temp_async.timestamp=ctime(&curtime);
+        sprintf(packet_temp_async.data,"%f",data);
+
+       }
+
+      if(mq_send(mqdes_temp_w,(const int8_t*)&packet_temp_async,sizeof(packet_temp_async),0)==-1){
+        printf("\nError in mq_send temp\n");
+        exit(1);
+      }
 
 
         mq_getattr(mqdes_temp_r,&attr_temp_r);
         count_req=attr_temp_r.mq_curmsgs;
       }
+      cond_type_temp=0;
 
     }
 
     else if(cond_type==1){
-      printf("\nWriting to temp queue_w\n");
 
       strcpy(packet_temp.log_message,"TEMPERATURE DATA");
       packet_temp.timestamp=ctime(&curtime);
-      float data= (float)rand()/1000000;
+      int16_t temp_data=read_temperature(file,(uint8_t)TEMP_REG);
+      float data;
+      int8_t sign=1;
+
+      if(temp_data > 0x800){
+        temp_data=~temp_data;
+        temp_data &=0x0FFF;
+        temp_data=temp_data + 0x01;
+        sign=-1;
+      }
+
+      data=temp_data*(0.0625)*sign;
+
+
       sprintf(packet_temp.data,"%f",data);
 
       if(mq_send(mqdes_temp_w,(const int8_t*)&packet_temp,sizeof(packet_temp),0)==-1){
