@@ -12,18 +12,21 @@
 #define BUFFER_SIZE (2)
 #define TEMP_REG (0x00)
 #define CONFIG_REG (0x01)
-
 #define EXTENDED_MODE ((0x1)<<12)
 #define SHUTDOWN_MODE (0x1)
 #define THERMOSTAT_MODE ((0x1)<<1)
 #define POLARITY_MODE ((0x1)<<2)
 #define ONE_SHOT_MODE ((0x1)<<7)
-
-
 #define CONV_RATE_1BY4 ((0x00)<<14)
 #define CONV_RATE_ONE ((0x01)<<14)
 #define CONV_RATE_FOUR ((0x2)<<14)
 #define CONV_RATE_EIGHT ((0x03)<<14)
+
+#define RETURN_ZERO (0)
+#define RETURN_CONV_RATE_8 (0xC000)
+#define RETURN_SHUTDOWN_MODE (0x01)
+#define RETURN_POLARITY_MODE (0x04)
+#define RETURN_THERMOSTAT_MODE (0x02)
 
 
 int32_t setup_i2c(int8_t filename[]){
@@ -167,7 +170,7 @@ int main(){
   //set conv rate to 8
   uint16_t read_value=configure_conv_rate(file, (uint8_t)CONFIG_REG, (uint16_t)CONV_RATE_EIGHT,1);
 
-  if((read_value & 0xC000 )==0xC000){
+  if((read_value & RETURN_CONV_RATE_8 )==RETURN_CONV_RATE_8){
     printf("\nTEST 1: CONFIGURE CONVERSION RATE 8 PASSED\n");
   }
   else{
@@ -178,7 +181,7 @@ int main(){
 
   //enable shutdown mode
   read_value=configure_shutdown_mode(file,(uint8_t)CONFIG_REG,(uint16_t)SHUTDOWN_MODE,1);
-  if((read_value & 0x01 )==0x01){
+  if((read_value & RETURN_SHUTDOWN_MODE )==RETURN_SHUTDOWN_MODE){
     printf("\nTEST 2: CONFIGURE SHUTDOWN ENABLE PASSED\n");
   }
   else{
@@ -189,7 +192,7 @@ int main(){
 
   //disable shutdown mode
   read_value=configure_shutdown_mode(file,(uint8_t)CONFIG_REG,(uint16_t)SHUTDOWN_MODE,0);
-  if((read_value & 0x01 )==0x00){
+  if((read_value & RETURN_SHUTDOWN_MODE )==RETURN_ZERO){
     printf("\nTEST 3: CONFIGURE SHUTDOWN DISABLE PASSED\n");
   }
   else{
@@ -200,7 +203,7 @@ int main(){
   uint16_t write_value=POLARITY_MODE;
   read_value=read_write_configuration_register(file,1,write_value,1);
 
-  if((read_value & 0x04 )==0x04){
+  if((read_value & RETURN_POLARITY_MODE )==RETURN_POLARITY_MODE){
     printf("\nTEST 4: CONFIGURE POLARITY HIGH PASSED\n");
   }
   else{
@@ -211,7 +214,7 @@ int main(){
   write_value=POLARITY_MODE;
   read_value=read_write_configuration_register(file,1,write_value,0);
 
-  if((read_value & 0x04 )==0x0){
+  if((read_value & RETURN_POLARITY_MODE )==RETURN_ZERO){
     printf("\nTEST 5: CONFIGURE POLARITY HIGH PASSED\n");
   }
   else{
@@ -224,7 +227,7 @@ int main(){
   read_value=read_write_configuration_register(file,1,write_value,1);
 
 
-  if((read_value & 0x02 )==0x02){
+  if((read_value & RETURN_THERMOSTAT_MODE )==RETURN_THERMOSTAT_MODE){
     printf("\nTEST 6: CONFIGURE INTERRUPT MODE PASSED\n");
   }
   else{
@@ -236,7 +239,7 @@ int main(){
   read_value=read_write_configuration_register(file,1,write_value,0);
 
 
-  if((read_value & 0x02 )==0x0){
+  if((read_value & RETURN_THERMOSTAT_MODE )==RETURN_ZERO){
     printf("\nTEST 7: CONFIGURE COMPARATOR MODE PASSED\n");
   }
   else{

@@ -35,6 +35,12 @@
 #define COMMAND_ADC0_HIGH (0x8D);
 
 
+#define RETURN_ZERO (0)
+#define RETURN_POWER_UP (0x33)
+#define RETURN_INTEGRATION_TIME (0x1)
+#define RETURN_IDENTIFICATION_REGISTER (0x50)
+#define RETURN_INTERRUPT_CONTROL_REGISTER (0x14)
+
 int32_t setup_i2c(int8_t filename[]){
   int32_t file=open(filename,O_RDWR);
   
@@ -141,41 +147,41 @@ int main(){
   uint8_t ret=write_read_control_register(file,(uint8_t)POWER_UP,1);
   ret=write_read_control_register(file,(uint8_t)POWER_UP,0);
 
-  if(ret==0x33){
-    printf("\nTEST1: READ/WRITE CONTROL REGISTER PASSED");
+  if(ret==RETURN_POWER_UP){
+    printf("\nTEST1: READ/WRITE CONTROL REGISTER PASSED\n");
   }
   else{
-    printf("\nTEST1: READ/WRITE CONTROL REGISTER FAILED");
+    printf("\nTEST1: READ/WRITE CONTROL REGISTER FAILED\n");
   }
 
 
   ret=configure_integration_time(file, (uint8_t)TIMING_REG);
 
-  if(ret==0x1){
-    printf("\nTEST2: CONFIGURE INTEGRATION REGISTER PASSED");
+  if(ret==RETURN_INTEGRATION_TIME){
+    printf("\nTEST2: CONFIGURE INTEGRATION REGISTER PASSED\n");
   }
   else{
-    printf("\nTEST2: CONFIGURE INTEGRATION REGISTER FAILED");
+    printf("\nTEST2: CONFIGURE INTEGRATION REGISTER FAILED\n");
   }
 
 
 
   ret=read_identification_register(file);
 
-  if(ret==0x50){
-    printf("\nTEST3: IDENTIFICATION REGISTER PASSED");
+  if(ret==RETURN_IDENTIFICATION_REGISTER){
+    printf("\nTEST3: IDENTIFICATION REGISTER PASSED\n");
   }
   else{
-    printf("\nTEST3: IDENTIFICATION REGISTER FAILED");
+    printf("\nTEST3: IDENTIFICATION REGISTER FAILED\n");
   }
 
 
   ret=enable_disable_interrupt_control_register(file,(uint8_t)INTR_VALUE);
-  if(ret==0x50){
-    printf("\nTEST4: ENABLE/DISABLE INTERRUPT CONTROL REGISTER PASSED");
+  if(ret==RETURN_INTERRUPT_CONTROL_REGISTER){
+    printf("\nTEST4: ENABLE/DISABLE INTERRUPT CONTROL REGISTER PASSED\n");
   }
   else{
-    printf("\nTEST4: ENABLE/DISABLE INTERRUPT CONTROL REGISTER FAILED");
+    printf("\nTEST4: ENABLE/DISABLE INTERRUPT CONTROL REGISTER FAILED\n");
   }
 
 
