@@ -10,12 +10,13 @@
 #include "i2c.h"
 #include "i2c_light.h"
 
+
 void *func2(void* t){
 
-  int8_t filename1[20];
-  int32_t file1;
-  snprintf(filename1,19,"/dev/i2c-%d",I2C_NUM);
-  file1=setup_i2c(filename1,(uint8_t)DEV_ADDR_LIGHT);
+  int8_t filename[20];
+  int32_t file;
+  snprintf(filename,19,"/dev/i2c-%d",I2C_NUM);
+  file=setup_i2c(filename,(uint8_t)DEV_ADDR_LIGHT);
 
   char logger_level[4][15]={"INFO","ERROR","SENSOR_VALUE","ALERT"};
   char task_no[5][15]={"MAIN_TASK","TEMP_TASK","LIGHT_TASK","LOGGER_TASK","DECISION_TASK"};
@@ -73,11 +74,15 @@ void *func2(void* t){
         packet_light_async.log_level=INFO;
         packet_light_async.log_id=LIGHT_TASK;
  
-//        light_write_read_control_register(file1,(uint8_t)POWER_UP,1);
-        uint16_t sensor_value_light=light_read_sensor_data_value(file1);
+        light_write_read_control_register(file,(uint8_t)POWER_UP,1);
+        if(ioctl(file, I2C_SLAVE, (uint8_t)DEV_ADDR_LIGHT)<0){
+          printf("\nERROR: Slave Address Resolution\n");
+          exit(1);
+        }
+
+        uint16_t sensor_value_light=light_read_sensor_data_value(file);
 
         float data= (float)sensor_value_light;
-  
 
        if(req_light.command=='d'){
         sprintf(packet_light_async.log_message,"LIGHT DATA TIMER CHANGED TO %d  BY %s",req_light.delay,task_no[req_light.src_id]);
@@ -111,12 +116,15 @@ void *func2(void* t){
       strcpy(packet_light.log_message,"LIGHT");
       packet_light.timestamp=ctime(&curtime);
 
+      if(ioctl(file, I2C_SLAVE, (uint8_t)DEV_ADDR_LIGHT)<0){
+          printf("\nERROR: Slave Address Resolution\n");
+          exit(1);
+      }
 
-  //    light_write_read_control_register(file1,(uint8_t)POWER_UP,1);
-      uint16_t sensor_value_light=light_read_sensor_data_value(file1);
+      light_write_read_control_register(file,(uint8_t)POWER_UP,1);
+      uint16_t sensor_value_light=light_read_sensor_data_value(file);
 
       float data= (float)sensor_value_light;
-
 
       sprintf(packet_light.data,"%f",data);
 
@@ -125,7 +133,6 @@ void *func2(void* t){
         exit(1);
       }
     }
-
     ret=pthread_mutex_unlock(&light_w_lock);
     if(ret){
         printf("\nError: mutex unlock failed in func2\n");
@@ -149,7 +156,7 @@ void *func2(void* t){
 
   }
  
-
+  close(file);
   printf("\nExiting Func 2\n");
   pthread_exit(NULL);
 

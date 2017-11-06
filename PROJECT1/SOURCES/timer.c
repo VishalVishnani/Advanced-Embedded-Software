@@ -19,10 +19,10 @@ void timer_init(void){
   sigaction(SIGALRM,&sa,NULL);
 
   timer.it_value.tv_sec=0;
-  timer.it_value.tv_usec=100000;
+  timer.it_value.tv_usec=200000;
 
   timer.it_interval.tv_sec=0;
-  timer.it_interval.tv_usec=100000;
+  timer.it_interval.tv_usec=200000;
 
   setitimer(ITIMER_REAL, &timer, NULL);
 }

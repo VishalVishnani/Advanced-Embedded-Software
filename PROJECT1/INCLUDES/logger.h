@@ -27,8 +27,8 @@ typedef struct log_packet{
   level log_level;
   task_id log_id;
   uint8_t *timestamp;
-  uint8_t log_message[100];
-  char data[100];
+  uint8_t log_message[300];
+  char data[300];
 }log;
 
 
@@ -41,10 +41,6 @@ typedef struct log_req{
   uint8_t delay;
 }request_log;
 
-/*
-char logger_level[4][15]={"INFO","ERROR","SENSOR_VALUE","ALERT"};
-char task_no[5][15]={"MAIN_TASK","TEMP_TASK","LIGHT_TASK","LOGGER_TASK","DECISION_TASK"};
-*/
 
 #endif
 

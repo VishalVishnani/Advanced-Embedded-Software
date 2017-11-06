@@ -18,7 +18,7 @@ void *func3(void* t){
 
   uint32_t count_msg_temp=0;
   uint32_t count_msg_light=0;
-  uint32_t count_main=0;
+  sig_atomic_t count_main=0;
   log packet_recv_temp;
   log packet_recv_light;
   log packet_recv_main;

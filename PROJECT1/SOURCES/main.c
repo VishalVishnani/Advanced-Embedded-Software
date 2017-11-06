@@ -13,7 +13,7 @@
 #include "thread.h"
 #include "i2c.h"
 
-#define I2C_NUM (2)
+#define I2C_NUM 2
 
 void timer_handler(int signum){
   cond_type=1;
@@ -95,7 +95,7 @@ void sighandler2(int signum){
   temp_query.dst_id=TEMP_TASK;
   time_t curtime=time(NULL);
   temp_query.timestamp=ctime(&curtime);
-  temp_query.command='d';
+  temp_query.command='k';
   temp_query.delay=5;
 
   if(mq_send(mqdes_temp_r,(const int8_t*)&temp_query,sizeof(temp_query),0)==-1){
@@ -110,7 +110,7 @@ void sighandler2(int signum){
 
 int main(int argc,char* argv[]){
   temp_timer_count=1;
-  light_timer_count=2;
+  light_timer_count=1;
 
   char file_name[100] = "log.txt";
   char path_name[100];
@@ -129,14 +129,13 @@ int main(int argc,char* argv[]){
   }
   else if(argc > 3)
   {
-     printf("\nTOOOO MANY ARGUMENTS\n");
+     printf("\nTOO MANY ARGUMENTS\n");
   }
   
   strcat(path_name,"/");
   strcat(file_open,path_name);
   strcat(file_open,file_name);
 
-  printf("\nFile with path %s\n",file_open);
   
   //if file already exists remove
   remove(file_open);
@@ -144,7 +143,6 @@ int main(int argc,char* argv[]){
 
   initialize_queues();
 
-  printf("\nQueue intialize\n");
   int8_t ret=1;
 
   pthread_initialize();
@@ -176,7 +174,7 @@ int main(int argc,char* argv[]){
   struct timespec heartbeat_timer;
 
   while(1){
-    heartbeat_timer=heartbeat_init(3,4000000);
+    heartbeat_timer=heartbeat_init(5,4000000);
 
     asyncmain_to_light++;
 
@@ -197,7 +195,6 @@ int main(int argc,char* argv[]){
 
       cond_type_light=2;
     }
-
 
     if(destroy_all==1){
       pthread_cond_broadcast(&timer_expire_temp);

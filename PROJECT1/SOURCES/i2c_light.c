@@ -2,40 +2,44 @@
 #include "i2c.h"
 
 
-void light_write_read_control_register(int32_t file,uint8_t write_value,uint8_t op){
+uint8_t light_write_read_control_register(int32_t file,uint8_t write_value,uint8_t op){
+  uint8_t ret=0;
   if(op==1){
     write_reg_byte_light(file,(uint8_t) COMMAND_CONTROL_REG,write_value);
   }
   else{
-    uint8_t ret=read_reg_byte_light(file,(uint8_t) COMMAND_CONTROL_REG);
+    ret=read_reg_byte_light(file,(uint8_t) COMMAND_CONTROL_REG);
     printf("\nControl Register Value = %x\n",ret);
   }
+  return ret;
 
 }
 
 
-void light_configure_integration_time(int32_t file, uint8_t write_value){
+uint8_t light_configure_integration_time(int32_t file, uint8_t write_value){
   write_reg_byte_light(file,(uint8_t) COMMAND_TIMING_REG,write_value);
 
   //read timing register
   uint8_t ret=read_reg_byte_light(file,(uint8_t) COMMAND_TIMING_REG);
   printf("\nTiming Register = %x\n",ret);
 
+  return ret;
 }
 
-void light_read_identification_register(int32_t file){
+uint8_t light_read_identification_register(int32_t file){
   uint8_t ret=read_reg_byte_light(file,(uint8_t) IDENTIFICATION_REG);
   printf("\nIdentification Register = %x\n",ret);
-
+  return ret;
 }
 
-void light_enable_disable_interrupt_control_register(int32_t file,uint8_t write_value){
+uint8_t light_enable_disable_interrupt_control_register(int32_t file,uint8_t write_value){
    write_reg_byte_light(file,(uint8_t) COMMAND_INT_REG, write_value);
 
   //read interrupt control register
   uint8_t ret=read_reg_byte_light(file,(uint8_t) COMMAND_INT_REG);
   printf("\nInterrupt Control Register = %x\n",ret);
 
+  return ret;
 }
 
 

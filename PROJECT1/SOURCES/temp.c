@@ -136,6 +136,12 @@ void *func1(void* t){
 
       strcpy(packet_temp.log_message,"TEMPERATURE DATA");
       packet_temp.timestamp=ctime(&curtime);
+
+      if(ioctl(file, I2C_SLAVE, (uint8_t)DEV_ADDR_TEMP)<0){
+        printf("\nERROR: Slave Address Resolution\n");
+        exit(1);
+       }
+
       int16_t temp_data=read_temperature(file,(uint8_t)TEMP_REG);
       float data;
       int8_t sign=1;

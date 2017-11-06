@@ -38,12 +38,12 @@
 #define COMMAND_ADC0_LOW (0x8C)
 #define COMMAND_ADC0_HIGH (0x8D)
 
-void light_write_read_control_register(int32_t file,uint8_t write_value,uint8_t op);
-void light_configure_integration_time(int32_t file, uint8_t write_value);
+uint8_t light_write_read_control_register(int32_t file,uint8_t write_value,uint8_t op);
+uint8_t light_configure_integration_time(int32_t file, uint8_t write_value);
 
-void light_read_identification_register(int32_t file);
+uint8_t light_read_identification_register(int32_t file);
 
-void light_enable_disable_interrupt_control_register(int32_t file,uint8_t write_value);
+uint8_t light_enable_disable_interrupt_control_register(int32_t file,uint8_t write_value);
 
 uint16_t light_read_sensor_data_value(int32_t file);
 

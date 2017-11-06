@@ -9,6 +9,8 @@
 #include "led.h"
 
 
+
+
 void *func4(void* t){
   char logger_level[4][15]={"INFO","ERROR","SENSOR_VALUE","ALERT"};
   char task_no[5][15]={"MAIN_TASK","TEMP_TASK","LIGHT_TASK","LOGGER_TASK","DECISION_TASK"};
@@ -49,6 +51,15 @@ void *func4(void* t){
           main_log_packet.timestamp=ctime(&curtime);
           strcpy(main_log_packet.data,packet_recv_decision.data);
           strcpy(main_log_packet.log_message,"ALERT TEMPERATURE EXCEEDED");
+          pthread_mutex_lock(&main_queue_lock);
+
+          if(mq_send(mqdes_main,(const int8_t*)&main_log_packet,sizeof(main_log_packet),0)==-1){
+            printf("\nError in mq_send main\n");
+            exit(1);
+          }
+
+          pthread_mutex_unlock(&main_queue_lock);
+
        
        }
        else if(val <0){
@@ -58,18 +69,37 @@ void *func4(void* t){
          main_log_packet.timestamp=ctime(&curtime);
          strcpy(main_log_packet.data,packet_recv_decision.data);
          strcpy(main_log_packet.log_message,"ALERT TEMPERATURE DROPPED");
+
+         pthread_mutex_lock(&main_queue_lock);
+
+         if(mq_send(mqdes_main,(const int8_t*)&main_log_packet,sizeof(main_log_packet),0)==-1){
+           printf("\nError in mq_send main\n");
+           exit(1);
+         }
+
+         pthread_mutex_unlock(&main_queue_lock);
+
         
-       }
+         }
      }
 
      else if(packet_recv_decision.log_id==2){
-       if(val>5000){
+       if(val>25000){
           main_log_packet.log_level=ALERT;
           main_log_packet.log_id=DECISION_TASK;
           curtime=time(NULL);
           main_log_packet.timestamp=ctime(&curtime);
           strcpy(main_log_packet.data,packet_recv_decision.data);
           strcpy(main_log_packet.log_message,"ALERT BRIGHT LIGHT");
+          pthread_mutex_lock(&main_queue_lock);
+
+          if(mq_send(mqdes_main,(const int8_t*)&main_log_packet,sizeof(main_log_packet),0)==-1){
+            printf("\nError in mq_send main\n");
+            exit(1);
+          }
+
+          pthread_mutex_unlock(&main_queue_lock);
+
           led_on();
 
        }
@@ -80,18 +110,18 @@ void *func4(void* t){
          main_log_packet.timestamp=ctime(&curtime);
          strcpy(main_log_packet.data,packet_recv_decision.data);
          strcpy(main_log_packet.log_message,"ALERT DARK LIGHT");
+         pthread_mutex_lock(&main_queue_lock);
+
+         if(mq_send(mqdes_main,(const int8_t*)&main_log_packet,sizeof(main_log_packet),0)==-1){
+           printf("\nError in mq_send main\n");
+           exit(1);
+         }
+
+         pthread_mutex_unlock(&main_queue_lock);
+
          led_off();
        }
      }
-
-     pthread_mutex_lock(&main_queue_lock);
-
-     if(mq_send(mqdes_main,(const int8_t*)&main_log_packet,sizeof(main_log_packet),0)==-1){
-        printf("\nError in mq_send main\n");
-        exit(1);
-     }
-
-     pthread_mutex_unlock(&main_queue_lock);
 
       mq_getattr(mqdes_decision,&attr_decision);
       count_decision=attr_decision.mq_curmsgs;

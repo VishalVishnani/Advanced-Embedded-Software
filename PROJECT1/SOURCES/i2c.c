@@ -1,5 +1,6 @@
 #include "i2c.h"
 #include "i2c_temp.h"
+#include "i2c_light.h"
 
 
 
@@ -21,6 +22,12 @@ int32_t setup_i2c(int8_t filename[],uint8_t slave_address){
 
 
 uint16_t read_register_halfword_temp(int32_t file,uint8_t command_reg){
+
+  if(ioctl(file, I2C_SLAVE, (uint8_t)DEV_ADDR_TEMP)<0){
+    printf("\nERROR: Slave Address Resolution\n");
+    exit(1);
+  }
+
   temp_write_pointer_reg(file,command_reg);
 
   uint8_t read_buffer[2]={'\0'};
@@ -37,6 +44,11 @@ uint16_t read_register_halfword_temp(int32_t file,uint8_t command_reg){
 
 
 void write_register_halfword_temp(int32_t file, uint8_t command_reg, uint16_t write_value){
+
+  if(ioctl(file, I2C_SLAVE, (uint8_t)DEV_ADDR_TEMP)<0){
+    printf("\nERROR: Slave Address Resolution\n");
+    exit(1);
+  }
 
   uint16_t read_value=read_register_halfword_temp(file,(uint8_t)CONFIG_REG);
 
@@ -56,6 +68,12 @@ void write_register_halfword_temp(int32_t file, uint8_t command_reg, uint16_t wr
 }
 
 void write_reg_byte_light(int32_t file, uint8_t command_reg, uint8_t write_value){
+
+  if(ioctl(file, I2C_SLAVE, (uint8_t)DEV_ADDR_LIGHT)<0){
+    printf("\nERROR: Slave Address Resolution\n");
+    exit(1);
+  }
+
   uint8_t write_buffer[BUFFER_SIZE];
   memset(write_buffer,'\0',sizeof(write_buffer));
   write_buffer[0]=command_reg;
@@ -67,6 +85,12 @@ void write_reg_byte_light(int32_t file, uint8_t command_reg, uint8_t write_value
 
 
 uint8_t read_reg_byte_light(int32_t file,uint8_t command_reg){
+
+  if(ioctl(file, I2C_SLAVE, (uint8_t)DEV_ADDR_LIGHT)<0){
+    printf("\nERROR: Slave Address Resolution\n");
+    exit(1);
+  }
+
 
   if(write(file,&command_reg,1)!=1){
     printf("\nERROR: Write2\n");
