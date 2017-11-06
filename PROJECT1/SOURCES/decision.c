@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "logger.h"
+#include "led.h"
 
 
 void *func4(void* t){
@@ -69,6 +70,7 @@ void *func4(void* t){
           main_log_packet.timestamp=ctime(&curtime);
           strcpy(main_log_packet.data,packet_recv_decision.data);
           strcpy(main_log_packet.log_message,"ALERT BRIGHT LIGHT");
+          led_on();
 
        }
        else if(val <500){
@@ -78,6 +80,7 @@ void *func4(void* t){
          main_log_packet.timestamp=ctime(&curtime);
          strcpy(main_log_packet.data,packet_recv_decision.data);
          strcpy(main_log_packet.log_message,"ALERT DARK LIGHT");
+         led_off();
        }
      }
 
