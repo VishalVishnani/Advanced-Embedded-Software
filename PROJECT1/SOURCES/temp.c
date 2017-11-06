@@ -92,12 +92,14 @@ void *func1(void* t){
       
 
         if(req_temp.command=='k'){
+        data=data+273.15;
         sprintf(packet_temp_async.log_message,"TEMPERATURE DATA IN KELVIN QUERIED BY %s",task_no[req_temp.src_id]);
         packet_temp_async.timestamp=ctime(&curtime);
         sprintf(packet_temp_async.data,"%f",data);
       }
 
       else if(req_temp.command=='f'){
+        data=(data*1.8)+32;
         sprintf(packet_temp_async.log_message,"TEMPERATURE DATA IN FAHRENHEIT QUERIED BY %s",task_no[req_temp.src_id]);
         packet_temp_async.timestamp=ctime(&curtime);
         sprintf(packet_temp_async.data,"%f",data);
@@ -179,6 +181,7 @@ void *func1(void* t){
 
   }
 
+  close(file);
   printf("\nExiting Func 1\n");
   pthread_exit(NULL);
 }
