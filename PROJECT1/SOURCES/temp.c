@@ -1,3 +1,14 @@
+/*****************************************************************************************
+* Authors : Vishal Vishnani
+* Date : 10/06/2017
+* 
+* File : temp.c
+* Description : Source file for temp
+*               -func1()
+******************************************************************************************/
+
+
+
 #include "thread.h"
 #include "logger.h"
 #include <stdio.h>
@@ -10,6 +21,15 @@
 #include "i2c.h"
 #include "i2c_temp.h"
 
+
+
+/******************************************************************************************
+*
+* func1() - Temperature thread which takes the temperature value from the sensor at
+*           periodic intervals,stores it in Temperature Queue and also receives 
+*           asynchronous requests from other threads in another queues and services 
+*           that request. It also periodically updates main that it is working
+********************************************************************************************/
 void *func1(void* t){
 
   int8_t filename[20];
@@ -32,9 +52,10 @@ void *func1(void* t){
   check_alive=0;
 
   while(1){
-
+    /*Used to signal main that temperature thread is working*/
     pthread_cond_broadcast(&heartbeat_temp);
 
+    /*If variable is set to 1, exit while(1) loop*/
     if(destroy_all==1){
       break;
     }
@@ -60,7 +81,8 @@ void *func1(void* t){
 	  continue;
     }
 
-	
+
+    /*Check if there is async query in temp query queue and service it first*/	
     if(cond_type_temp==2){
       printf("\n--------------------------ASYNC QUERY FOR TEMP----------------------------\n");
       mq_getattr(mqdes_temp_r,&attr_temp_r);
@@ -81,6 +103,7 @@ void *func1(void* t){
         float data;
         int8_t sign=1;
 
+        /*For negative temperature*/
         if(temp_data > 0x800){
           temp_data=~temp_data;
           temp_data &=0x0FFF;
@@ -88,9 +111,11 @@ void *func1(void* t){
           sign=-1;
         }
 
+        /*Conversion in degree celsius*/
         data=temp_data*(0.0625)*sign;
       
 
+        /*If request is to get data in kelvin*/
         if(req_temp.command=='k'){
         data=data+273.15;
         sprintf(packet_temp_async.log_message,"TEMPERATURE DATA IN KELVIN QUERIED BY %s",task_no[req_temp.src_id]);
@@ -98,6 +123,7 @@ void *func1(void* t){
         sprintf(packet_temp_async.data,"%f",data);
       }
 
+      /*If request is to get data in fahrenheit*/
       else if(req_temp.command=='f'){
         data=(data*1.8)+32;
         sprintf(packet_temp_async.log_message,"TEMPERATURE DATA IN FAHRENHEIT QUERIED BY %s",task_no[req_temp.src_id]);
@@ -105,6 +131,7 @@ void *func1(void* t){
         sprintf(packet_temp_async.data,"%f",data);
       }
 
+      /*If request is to delay temperature timer*/
       else if(req_temp.command=='d'){
         sprintf(packet_temp_async.log_message,"TEMPERATURE DATA TIMER DELAYED BY %d BY %s",req_temp.delay,task_no[req_temp.src_id]);
         packet_temp_async.timestamp=ctime(&curtime);
@@ -142,10 +169,12 @@ void *func1(void* t){
         exit(1);
        }
 
+      /*Read temperature data value from sensor*/
       int16_t temp_data=read_temperature(file,(uint8_t)TEMP_REG);
       float data;
       int8_t sign=1;
 
+      /*Neagtive conversion*/
       if(temp_data > 0x800){
         temp_data=~temp_data;
         temp_data &=0x0FFF;

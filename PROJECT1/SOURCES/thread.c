@@ -1,3 +1,20 @@
+/*****************************************************************************************
+* Authors : Vishal Vishnani
+* Date : 10/06/2017
+* 
+* File : thread.c
+* Description : Header file for Threads
+*               -func1()
+*               -func2()
+*               -func3()
+*               -func4()
+*               -pthread_initialize()
+******************************************************************************************/
+
+
+
+
+/*INCLUDES*/
 #include "thread.h"
 #include <stdio.h>
 #include <stdint.h>
@@ -7,6 +24,7 @@
 #include <stdlib.h>
 
 
+/*Function to initialize pthreads, mutexes, conditions*/
 void pthread_initialize(void){
   int8_t ret=1;
 

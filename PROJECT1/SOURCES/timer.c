@@ -1,3 +1,14 @@
+/*****************************************************************************************
+* Authors : Vishal Vishnani
+* Date : 10/06/2017
+* 
+* File : timer.c
+* Description : Source file for Timer
+*               -timer_init()
+*               -timespec_heartbeat_init()
+******************************************************************************************/
+
+/*INCLUDES*/
 #include <stdio.h>
 #include <stdint.h>
 #include <sys/time.h>
@@ -10,7 +21,7 @@
 
 void timer_handler(int signum);
 
-
+/*Function to initialize timer to execute handler periodically*/
 void timer_init(void){
 
   memset(&sa,0,sizeof(sa));
@@ -27,6 +38,8 @@ void timer_init(void){
   setitimer(ITIMER_REAL, &timer, NULL);
 }
 
+
+/*Function to initialize heartbeat timer in secs and nsecs*/
 struct timespec heartbeat_init(uint32_t sec_value,uint32_t nsec_value){
   struct timespec t1;
   struct timeval t2;

@@ -1,3 +1,14 @@
+/****************************************************************************************
+* Authors : Vishal Vishnani
+* Date : 10/06/2017
+* 
+* File : log.c
+* Description : Source file for Threads
+*               -func3()
+******************************************************************************************/
+
+
+
 #include "thread.h"
 #include <stdio.h>
 #include <stdint.h>
@@ -7,6 +18,12 @@
 #include <stdlib.h>
 #include "logger.h"
 
+
+/******************************************************************************************
+*
+* func3() - Logger thread which reads from temperature and light queue and logs it
+*           in LOG file. It also periodically updates main that it is working
+********************************************************************************************/
 void *func3(void* t){
 
   char logger_level[4][15]={"INFO","ERROR","SENSOR_VALUE","ALERT"};
@@ -29,6 +46,8 @@ void *func3(void* t){
   while(1){
 
     ret=-1;
+
+    /*Used to signal main that its working*/
     pthread_cond_broadcast(&heartbeat_logger);
 
     ret=pthread_mutex_trylock(&temp_w_lock);
@@ -37,6 +56,7 @@ void *func3(void* t){
       mq_getattr(mqdes_temp_w,&attr_temp_w);
       count_msg_temp=attr_temp_w.mq_curmsgs;
 
+      /*Used to read temperature queue and log it in file*/
       while(count_msg_temp){
         n=mq_receive(mqdes_temp_w,(int8_t*)&packet_recv_temp,4096,NULL);
         
@@ -45,6 +65,8 @@ void *func3(void* t){
         strcpy(task_write, task_no[packet_recv_temp.log_id]);
         sprintf(buffer,"\n\nLOG LEVEL    %s\nTASK ID      %s\nTIMESTAMP    %sLOG MESSAGE  %s\nLOG DATA     %s\n\n",logger_level_write,task_write,packet_recv_temp.timestamp,packet_recv_temp.log_message,packet_recv_temp.data);
         
+
+        /*Open file and log it*/
         FILE* fd=fopen(file_open,"a+");
         if(fd==NULL){
           printf("\nERROR: file open failed\n");
@@ -71,12 +93,14 @@ void *func3(void* t){
 
     ret=-1;
 
+
     ret=pthread_mutex_trylock(&light_w_lock);
     if(ret==0){
     
       mq_getattr(mqdes_light_w,&attr_light_w);
       count_msg_light=attr_light_w.mq_curmsgs;
-
+     
+     /*Used to read light queue*/
       while(count_msg_light){
         n=mq_receive(mqdes_light_w,(int8_t*)&packet_recv_light,4096,NULL);
         
@@ -85,6 +109,7 @@ void *func3(void* t){
         strcpy(task_write, task_no[packet_recv_light.log_id]);
         sprintf(buffer,"\n\nLOG LEVEL    %s\nTASK ID      %s\nTIMESTAMP    %sLOG MESSAGE  %s\nLOG DATA     %s\n\n",logger_level_write,task_write,packet_recv_light.timestamp,packet_recv_light.log_message,packet_recv_light.data);
 
+        /*Open file and write it*/
         FILE* fd=fopen(file_open,"a+");
         if(fd==NULL){
           printf("\nERROR: file open failed\n");
@@ -116,6 +141,8 @@ void *func3(void* t){
       mq_getattr(mqdes_main,&attr_main);
       count_main=attr_main.mq_curmsgs;
       while(count_main){
+
+        /*Used to read main queue*/
         n=mq_receive(mqdes_main,(int8_t*)&packet_recv_main,4096,NULL);
         
         printf("\n%s\n",packet_recv_main.log_message);
@@ -123,6 +150,7 @@ void *func3(void* t){
         strcpy(task_write, task_no[packet_recv_main.log_id]);
         sprintf(buffer,"\n\nLOG LEVEL    %s\nTASK ID      %s\nTIMESTAMP    %sLOG MESSAGE  %s\nLOG DATA    %s\n\n",logger_level_write,task_write,packet_recv_main.timestamp,packet_recv_main.log_message,packet_recv_main.data);
        
+        /*Open file and write it*/
         FILE* fd=fopen(file_open,"a+");
         if(fd==NULL){
           printf("\nERROR: file open failed\n");
@@ -145,6 +173,7 @@ void *func3(void* t){
       mq_getattr(mqdes_main,&attr_main);
     }
 
+    /*break while(1) when destroy_all is set*/
     if(destroy_all==1){
 	break;
     }

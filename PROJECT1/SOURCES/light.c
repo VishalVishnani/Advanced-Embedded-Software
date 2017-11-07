@@ -1,3 +1,15 @@
+/*****************************************************************************************
+* Authors : Vishal Vishnani
+* Date : 10/06/2017
+* 
+* File : light.c
+* Description : Source file for light threads
+*               -func2()
+******************************************************************************************/
+
+
+
+
 #include "thread.h"
 #include <stdio.h>
 #include <stdint.h>
@@ -10,6 +22,14 @@
 #include "i2c.h"
 #include "i2c_light.h"
 
+
+/******************************************************************************************
+*
+* func2() - Light thread which takes the temperature value from the sensor at
+*           periodic intervals,stores it in Light Queue and also receives 
+*           asynchronous requests from other threads in another queue and services 
+*           that requests. It also periodically updates main that it is working
+********************************************************************************************/
 
 void *func2(void* t){
 
@@ -30,14 +50,18 @@ void *func2(void* t){
   uint32_t count_req=0;
 
   while(1){
+    /*Heartbeat used to signal main that its working*/
     pthread_cond_broadcast(&heartbeat_light);
 
+  // check_alive++;
 
+    /*Used to kill all threads and exit gracefully if one stops working*/
     if(check_alive==40){
       pthread_cancel(threads[1]);
     }
       
 
+    /*Break this loop, if this variable is set and exit gracefully*/
     if(destroy_all==1){
       break;
     }
@@ -61,6 +85,7 @@ void *func2(void* t){
       continue;
     }
 
+    /*Check if there is async query for light task and service it first*/
     if(cond_type_light==2){
       printf("\n----------------ASYNC QUERY FOR LIGHT----------------------\n");
       mq_getattr(mqdes_light_r,&attr_light_r);
@@ -74,6 +99,7 @@ void *func2(void* t){
         packet_light_async.log_level=INFO;
         packet_light_async.log_id=LIGHT_TASK;
  
+        /*Read ADC light values from sensor*/
         light_write_read_control_register(file,(uint8_t)POWER_UP,1);
         if(ioctl(file, I2C_SLAVE, (uint8_t)DEV_ADDR_LIGHT)<0){
           printf("\nERROR: Slave Address Resolution\n");
@@ -84,6 +110,7 @@ void *func2(void* t){
 
         float data= (float)sensor_value_light;
 
+       /*If request is to delay light timer*/
        if(req_light.command=='d'){
         sprintf(packet_light_async.log_message,"LIGHT DATA TIMER CHANGED TO %d  BY %s",req_light.delay,task_no[req_light.src_id]);
         packet_light_async.timestamp=ctime(&curtime);
@@ -121,6 +148,7 @@ void *func2(void* t){
           exit(1);
       }
 
+      /*Read light adc values from sensor*/
       light_write_read_control_register(file,(uint8_t)POWER_UP,1);
       uint16_t sensor_value_light=light_read_sensor_data_value(file);
 

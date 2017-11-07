@@ -1,3 +1,14 @@
+/*****************************************************************************************
+* Authors : Vishal Vishnani
+* Date : 10/06/2017
+* 
+* File : decision.c
+* Description : Source file for decison thread
+*               -func4()
+*****************************************************************************************/
+
+
+/*INCLUDES*/
 #include "thread.h"
 #include <stdio.h>
 #include <stdint.h>
@@ -9,8 +20,19 @@
 #include "led.h"
 
 
+#define TEMP_LOW (0)
+#define TEMP_HIGH (50)
+#define LIGHT_LOW (500)
+#define LIGHT_HIGH (20000)
 
+#define TEMP_ID (1)
+#define LIGHT_ID (2)
 
+/******************************************************************************************
+*
+* func4() - Decisiom thread which reads from queue and takes decision based on it (ALERTS). 
+*           It also periodically updates main that it is working
+********************************************************************************************/
 void *func4(void* t){
   char logger_level[4][15]={"INFO","ERROR","SENSOR_VALUE","ALERT"};
   char task_no[5][15]={"MAIN_TASK","TEMP_TASK","LIGHT_TASK","LOGGER_TASK","DECISION_TASK"};
@@ -22,6 +44,7 @@ void *func4(void* t){
   int8_t ret=-1;
   time_t curtime;
   while(1){
+    /*Used to signal main that decision thread is working*/
     pthread_cond_broadcast(&heartbeat_decision);
 
     ret=-1;
@@ -36,15 +59,17 @@ void *func4(void* t){
     mq_getattr(mqdes_decision,&attr_decision);
     count_decision=attr_decision.mq_curmsgs;
   
+    /*Reads messages from decision queue and take decision and log it*/
     while(count_decision){
       n=mq_receive(mqdes_decision,(int8_t*)&packet_recv_decision,4096,NULL);
 
       float val=0;
       val=atof(packet_recv_decision.data);
 
-
-      if(packet_recv_decision.log_id==1){
-        if(val>50){
+    
+      /*If temperature value greater than 50, send ALERT to logger*/
+      if(packet_recv_decision.log_id==TEMP_ID){
+        if(val>TEMP_HIGH){
           main_log_packet.log_level=ALERT;
           main_log_packet.log_id=DECISION_TASK;
           curtime=time(NULL);
@@ -62,7 +87,9 @@ void *func4(void* t){
 
        
        }
-       else if(val <0){
+      
+       /*If tempertaure value less than 0, send alert to logger*/
+       else if(val <TEMP_LOW){
          main_log_packet.log_level=ALERT;
          main_log_packet.log_id=DECISION_TASK;
          curtime=time(NULL);
@@ -83,8 +110,9 @@ void *func4(void* t){
          }
      }
 
-     else if(packet_recv_decision.log_id==2){
-       if(val>25000){
+     /*If light sensor ADC value greater than 20000, send alert to logger and turn on led*/
+     else if(packet_recv_decision.log_id==LIGHT_ID){
+       if(val>LIGHT_HIGH){
           main_log_packet.log_level=ALERT;
           main_log_packet.log_id=DECISION_TASK;
           curtime=time(NULL);
@@ -103,7 +131,9 @@ void *func4(void* t){
           led_on();
 
        }
-       else if(val <500){
+
+       /*If light sensor ADC value less than 500, send alert to logger and turn off leds*/
+       else if(val <LIGHT_LOW){
          main_log_packet.log_level=ALERT;
          main_log_packet.log_id=DECISION_TASK;
          curtime=time(NULL);
@@ -134,6 +164,7 @@ void *func4(void* t){
 
     pthread_cond_broadcast(&heartbeat_decision);
 
+    /*Exit while(1) loop, when this variable is 1*/
     if(destroy_all==1){
       break;
     }

@@ -43,7 +43,7 @@ uint16_t read_register_halfword_temp(int32_t file,uint8_t command_reg){
 
 
 
-void write_register_halfword_temp(int32_t file, uint8_t command_reg, uint16_t write_value){
+void write_register_halfword_temp(int32_t file, uint8_t command_reg, uint16_t write_value,uint8_t set_value){
 
   if(ioctl(file, I2C_SLAVE, (uint8_t)DEV_ADDR_TEMP)<0){
     printf("\nERROR: Slave Address Resolution\n");
@@ -54,7 +54,14 @@ void write_register_halfword_temp(int32_t file, uint8_t command_reg, uint16_t wr
 
   uint16_t comp_write_value=~write_value;
   read_value=read_value & comp_write_value;
-  write_value=write_value | read_value;
+
+  if(set_value==1){
+    write_value=write_value | read_value;
+  }
+  else{
+    write_value=read_value;
+  }
+
 
   uint8_t write_buffer[3]={'\0'};
   write_buffer[0]=command_reg;

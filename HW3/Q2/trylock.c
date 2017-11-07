@@ -14,7 +14,7 @@
 #include <stdint.h>
 
 //Macros
-#define NTHREADS 3
+#define NTHREADS 2
 #define COUNT_LIMIT 1000000
 
 //Global variable to be modified by threads
@@ -26,28 +26,37 @@ pthread_mutex_t count_mutex;
 
 //Function to be executed by threads
 void* write_count(void *t){
-  long i;
+ 
   int8_t ret;
 
-  for(i=0;i<COUNT_LIMIT;i++){
+   while(1){ 
 
     //use mutex trylock as we update global variable shared among threads
     ret=pthread_mutex_trylock(&count_mutex);
-    if(ret)
-      printf("\npthread_mutex_trylock failed\n");
+    if(ret==0){
+   //   printf("\npthread_mutex_trylock failed\n");
 
-    count++;
+      printf("\nInside trylock\n");
     
-    //unlock mutex
-    ret=pthread_mutex_unlock(&count_mutex);
-    if(ret)
-    printf("\npthread_mutex_unlock failed\n");
-
+      //unlock mutex
+      ret=pthread_mutex_unlock(&count_mutex);
+      if(ret)
+        printf("\npthread_mutex_unlock failed\n");
+    }
+    printf("\nTrylock outside\n");
+   
   }
     
   pthread_exit(NULL);
 }
 
+void* loop2(void* t){
+
+  while(1){
+    pthread_mutex_lock(&count_mutex);
+  }
+
+}
 int main()
 {
   uint8_t i;
@@ -70,14 +79,19 @@ int main()
 
 
   //Create pthreads to execute write count function
-  for(i=0;i<NTHREADS;i++){
-    ret=pthread_create(&threads[i],&attr,write_count,NULL);
+ // for(i=0;i<NTHREADS;i++){
+    ret=pthread_create(&threads[0],&attr,write_count,NULL);
     if(ret)
-      printf("\nError in pthread create %d\n",i);
+      printf("\nError in pthread create0 \n");
 
-  }
+ // }
 
   
+  ret=pthread_create(&threads[1],&attr,loop2,NULL);
+    if(ret)
+      printf("\nError in pthread create1\n");
+
+
   //wait for threads to join
   for(i=0;i<NTHREADS;i++){
     ret=pthread_join(threads[i],NULL);
@@ -87,8 +101,6 @@ int main()
   }
   printf("Threads joined\n");
 
-  //final count value
-  printf("\nCount=%d\n",count);
 
   //destroy attribute and mutex
   ret=pthread_attr_destroy(&attr);

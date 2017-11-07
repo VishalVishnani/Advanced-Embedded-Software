@@ -1,3 +1,19 @@
+/*****************************************************************************************
+* Authors : Vishal Vishnani
+* Date : 10/06/2017
+* 
+* File : main.c
+* Description : Source file for main
+*               -siginthandler()
+*               -sighandler1()
+*               -sighandler2()
+*               -timer_handler()
+******************************************************************************************/
+
+
+
+
+
 #include <stdint.h>
 #include <stdio.h>
 #include <mqueue.h>
@@ -15,6 +31,8 @@
 
 #define I2C_NUM 2
 
+
+/*Timer handler executed when timer value reached*/
 void timer_handler(int signum){
   cond_type=1;
   static int temp_counter=0;
@@ -22,11 +40,13 @@ void timer_handler(int signum){
   temp_counter++;
   light_counter++;
 
+  /*Used to delay temperature timer if required*/
   if(temp_counter==temp_timer_count){
     pthread_cond_broadcast(&timer_expire_temp);
     temp_counter=0;
   }
 
+  /*used to delay light timer if required*/
   if(light_counter==light_timer_count){
     pthread_cond_broadcast(&timer_expire_light);
     light_counter=0;
@@ -34,11 +54,12 @@ void timer_handler(int signum){
 }
                 
 
-
+/*Handler for ctrl c to gracefully exit*/
 void siginthandler( ){
   printf("\nIn SIGINT handler\n");
   log sig_log_packet;
 
+  /*Log it to the main queue*/
   sig_log_packet.log_level=ERROR;
   sig_log_packet.log_id=MAIN_TASK;
   time_t curtime=time(NULL);
@@ -54,6 +75,7 @@ void siginthandler( ){
   }
   
   usleep(10000);
+  /*Set this variable to break the loop in thread functions*/
   destroy_all=1;
   pthread_cond_broadcast(&timer_expire_temp);
   pthread_cond_broadcast(&timer_expire_light);
@@ -61,7 +83,7 @@ void siginthandler( ){
 
 }
 
-
+/*Used to send async query from temp task to light task*/
 void sighandler1(int signum){
   printf("\nIn SIGHANDLER for USR1\n");
   printf("\nTemp task will  Query to light\n");
@@ -85,7 +107,7 @@ void sighandler1(int signum){
 }
 
 
-
+/*used to send async query from light task to temperature task*/
 void sighandler2(int signum){
   printf("\nIn SIGHANDLER for USR2\n");
   printf("\nLight thread will query temperature thread\n");
@@ -112,6 +134,7 @@ int main(int argc,char* argv[]){
   temp_timer_count=1;
   light_timer_count=1;
 
+  /*Used to take name of file from commandline to log*/
   char file_name[100] = "log.txt";
   char path_name[100];
   char *path = getenv("PWD");
@@ -147,6 +170,7 @@ int main(int argc,char* argv[]){
 
   pthread_initialize();
 
+  /*Log it that the threads have been created*/
   log main_log_packet;
   main_log_packet.log_level=INFO;
   main_log_packet.log_id=MAIN_TASK;
@@ -178,6 +202,7 @@ int main(int argc,char* argv[]){
 
     asyncmain_to_light++;
 
+    /*Used to send async query to light task*/
     if(asyncmain_to_light==20){
 
       request_log light_query;
@@ -196,6 +221,7 @@ int main(int argc,char* argv[]){
       cond_type_light=2;
     }
 
+    /*if set gracefully exit*/
     if(destroy_all==1){
       pthread_cond_broadcast(&timer_expire_temp);
       pthread_cond_broadcast(&timer_expire_light);
@@ -203,7 +229,8 @@ int main(int argc,char* argv[]){
       break;
     }
 
-    
+   
+    /*Check if all threads are working, if not then gracefully exit and log it*/ 
     ret=pthread_mutex_lock(&heart_beat_temp_lock);
     if(ret){
       printf("\nError: heartbeat mutex lock failed in main\n");
@@ -348,6 +375,7 @@ int main(int argc,char* argv[]){
   int8_t i=0;
   ret=-1;
 
+  /*Wait for threads to join for graceful exit*/
   for(i=0;i<4;i++){
     ret=pthread_join(threads[i],NULL);
     if(ret){
@@ -356,6 +384,7 @@ int main(int argc,char* argv[]){
   }
 
 
+  /*Destroy mutex and condition Variables*/
   printf("\nDestroying mutex and cond\n");
   ret=pthread_mutex_destroy(&temp_w_lock);
   if(ret){
@@ -430,6 +459,8 @@ int main(int argc,char* argv[]){
     printf("\nError in heartbeat decision cond destroy\n");
   }
 
+
+  /*Close all the queues*/
   mq_close(mqdes_temp_w);
   mq_close(mqdes_light_w);
 

@@ -1,7 +1,19 @@
+/****************************************************************************************
+* Authors : Vishal Vishnani
+* Date : 10/06/2017
+* 
+* File : queue.c
+* Description : Source file for Message Queues
+                -initilialize_queues()
+******************************************************************************************/
+
+
+
 
 #include "queue.h"
 #include <stdlib.h>
 
+/*Function which intializes queues with number of msgs and its size and opens them*/
 void initialize_queues(void){
   attr_temp_w.mq_maxmsg=NO_OF_MSG;
   attr_temp_w.mq_msgsize=sizeof(log);
