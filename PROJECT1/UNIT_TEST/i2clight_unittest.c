@@ -1,3 +1,11 @@
+/***************************************************************************************
+* Authors : Vishal Vishnani
+* Date : 10/06/2017
+* 
+* File : i2clight_unittest.c
+* Description : Unit test file for i2c light
+******************************************************************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -41,6 +49,7 @@
 #define RETURN_IDENTIFICATION_REGISTER (0x50)
 #define RETURN_INTERRUPT_CONTROL_REGISTER (0x14)
 
+/*Function to setuo i2c*/
 int32_t setup_i2c(int8_t filename[]){
   int32_t file=open(filename,O_RDWR);
   
@@ -59,7 +68,7 @@ int32_t setup_i2c(int8_t filename[]){
 }
 
 
-
+/*Function to write byte to register*/
 void write_reg_byte(int32_t file, uint8_t command_reg, uint8_t write_value){
   uint8_t write_buffer[BUFFER_SIZE];
   memset(write_buffer,'\0',sizeof(write_buffer));
@@ -71,7 +80,7 @@ void write_reg_byte(int32_t file, uint8_t command_reg, uint8_t write_value){
 }
 
 
-
+/*function to read byte from register*/
 uint8_t read_reg_byte(int32_t file,uint8_t command_reg){
   
   if(write(file,&command_reg,1)!=1){
@@ -85,6 +94,7 @@ uint8_t read_reg_byte(int32_t file,uint8_t command_reg){
 }
 
 
+/*Function to read/write control register of light sensor*/
 uint8_t write_read_control_register(int32_t file,uint8_t write_value,uint8_t op){
   uint8_t ret=0;
   if(op==1){
@@ -97,6 +107,7 @@ uint8_t write_read_control_register(int32_t file,uint8_t write_value,uint8_t op)
 }
 
 
+/*Function to configure integration time of light sensor*/
 uint8_t configure_integration_time(int32_t file, uint8_t write_value){
   write_reg_byte(file,(uint8_t) COMMAND_TIMING_REG,write_value);
 
@@ -107,6 +118,7 @@ uint8_t configure_integration_time(int32_t file, uint8_t write_value){
 }
 
 
+/*Function to read identification register*/
 uint8_t read_identification_register(int32_t file){
   uint8_t ret=read_reg_byte(file,(uint8_t) IDENTIFICATION_REG);
 
@@ -114,6 +126,7 @@ uint8_t read_identification_register(int32_t file){
 }
 
 
+/*Function to enable/disable interrupt control register*/
 uint8_t enable_disable_interrupt_control_register(int32_t file,uint8_t write_value){
    write_reg_byte(file,(uint8_t) COMMAND_INT_REG, write_value);
 
@@ -123,7 +136,7 @@ uint8_t enable_disable_interrupt_control_register(int32_t file,uint8_t write_val
   return ret;
 }
 
-
+/*function to read sensor data value*/
 uint16_t read_sensor_data_value(int32_t file){
   //read ADC0 low
   uint8_t ret=read_reg_byte(file,(uint8_t) COMMAND_ADC0_LOW);
@@ -144,9 +157,11 @@ int main(){
   snprintf(filename,19,"/dev/i2c-%d",I2C_NUM);
   file=setup_i2c(filename);
 
+  /**** TEST TO POWER UP DEVICE*************/
   uint8_t ret=write_read_control_register(file,(uint8_t)POWER_UP,1);
   ret=write_read_control_register(file,(uint8_t)POWER_UP,0);
 
+  
   if(ret==RETURN_POWER_UP){
     printf("\nTEST1: READ/WRITE CONTROL REGISTER PASSED\n");
   }
@@ -155,6 +170,7 @@ int main(){
   }
 
 
+  /*****TEST TO CONFIGURE INTEGRATION TIME*********/
   ret=configure_integration_time(file, (uint8_t)TIMING_REG);
 
   if(ret==RETURN_INTEGRATION_TIME){
@@ -165,7 +181,7 @@ int main(){
   }
 
 
-
+  /************TEST TO CHECK IDENTIFICATION REGISTER VALUE**********/
   ret=read_identification_register(file);
 
   if(ret==RETURN_IDENTIFICATION_REGISTER){
@@ -176,6 +192,7 @@ int main(){
   }
 
 
+  /************TEST TO ENABLE/DISABLE CONTROL REGISTER**************/
   ret=enable_disable_interrupt_control_register(file,(uint8_t)INTR_VALUE);
   if(ret==RETURN_INTERRUPT_CONTROL_REGISTER){
     printf("\nTEST4: ENABLE/DISABLE INTERRUPT CONTROL REGISTER PASSED\n");

@@ -1,3 +1,12 @@
+/***************************************************************************************
+* Authors : Vishal Vishnani
+* Date : 10/06/2017
+* 
+* File : i2ctemp_unittest.c
+* Description : Unit test file for i2c light
+******************************************************************************************/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -28,7 +37,7 @@
 #define RETURN_POLARITY_MODE (0x04)
 #define RETURN_THERMOSTAT_MODE (0x02)
 
-
+/*Function to setup i2c*/
 int32_t setup_i2c(int8_t filename[]){
   int32_t file=open(filename,O_RDWR);
 
@@ -46,7 +55,7 @@ int32_t setup_i2c(int8_t filename[]){
 }
 
 
-  
+/*Function to write to pointer register of temperature sensor*/ 
 void write_pointer_reg(int32_t file,uint8_t register_type){
   uint8_t write_value=0;
   write_value=register_type;
@@ -57,7 +66,7 @@ void write_pointer_reg(int32_t file,uint8_t register_type){
 }
 
 
-
+/*Function to read 16 bit register*/
 uint16_t read_register_halfword(int32_t file,uint8_t command_reg){
   write_pointer_reg(file,command_reg);
 
@@ -73,7 +82,7 @@ uint16_t read_register_halfword(int32_t file,uint8_t command_reg){
 }
 
 
-
+/*Function to write 16 bit register*/
 void write_register_halfword(int32_t file, uint8_t command_reg, uint16_t write_value,uint8_t set_value){
 
   uint16_t read_value=read_register_halfword(file,(uint8_t)CONFIG_REG);
@@ -102,7 +111,7 @@ void write_register_halfword(int32_t file, uint8_t command_reg, uint16_t write_v
 }
 
 
-
+/*Function to configure conversion rate of temperature sensor*/
 uint16_t configure_conv_rate(int32_t file, uint8_t command_reg, uint16_t write_value,uint8_t set_value){
   uint16_t read_value=read_register_halfword(file,command_reg);
   write_register_halfword(file,command_reg,write_value,set_value);
@@ -112,7 +121,7 @@ uint16_t configure_conv_rate(int32_t file, uint8_t command_reg, uint16_t write_v
 }
 
 
-
+/*Function to configure shutdown mode of temperature sensor*/
 uint16_t configure_shutdown_mode(int32_t file,uint8_t command_reg, uint16_t mode_value,uint8_t set_value){
   uint16_t read_value=read_register_halfword(file,command_reg);
   write_register_halfword(file,command_reg,mode_value,set_value);
@@ -121,7 +130,7 @@ uint16_t configure_shutdown_mode(int32_t file,uint8_t command_reg, uint16_t mode
 }
 
 
-
+/*Function to read/write configuration register*/
 uint16_t read_write_configuration_register(int32_t file,uint8_t op, uint16_t write_value,uint8_t set_value){
 
   uint16_t read_value=read_register_halfword(file,(uint8_t)CONFIG_REG);
@@ -139,7 +148,7 @@ uint16_t read_write_configuration_register(int32_t file,uint8_t op, uint16_t wri
 }
 
 
-
+/*Function to read temperature*/
 int16_t read_temperature(int32_t file, uint8_t command_reg){
   write_pointer_reg(file,command_reg);
 
@@ -167,7 +176,7 @@ int main(){
   int8_t sign=1;
 
 
-  //set conv rate to 8
+  /************TEST TO SET CONVERSION RATE*************************/
   uint16_t read_value=configure_conv_rate(file, (uint8_t)CONFIG_REG, (uint16_t)CONV_RATE_EIGHT,1);
 
   if((read_value & RETURN_CONV_RATE_8 )==RETURN_CONV_RATE_8){
@@ -179,7 +188,7 @@ int main(){
 
 
 
-  //enable shutdown mode
+  /*************TEST TO ENABLE SHUTDOWN MODE**************************/
   read_value=configure_shutdown_mode(file,(uint8_t)CONFIG_REG,(uint16_t)SHUTDOWN_MODE,1);
   if((read_value & RETURN_SHUTDOWN_MODE )==RETURN_SHUTDOWN_MODE){
     printf("\nTEST 2: CONFIGURE SHUTDOWN ENABLE PASSED\n");
@@ -190,7 +199,7 @@ int main(){
 
 
 
-  //disable shutdown mode
+  /***********TEST TO DISABLE SHUTDOWN MODE*************************/
   read_value=configure_shutdown_mode(file,(uint8_t)CONFIG_REG,(uint16_t)SHUTDOWN_MODE,0);
   if((read_value & RETURN_SHUTDOWN_MODE )==RETURN_ZERO){
     printf("\nTEST 3: CONFIGURE SHUTDOWN DISABLE PASSED\n");
@@ -199,7 +208,7 @@ int main(){
     printf("\nTEST 3: CONFIGURE SHUTDOWN DISABLE FAILED\n");
   }
 
-  //set polarity high
+  /*****************TEST TO SET POLARITY HIGH*************************/
   uint16_t write_value=POLARITY_MODE;
   read_value=read_write_configuration_register(file,1,write_value,1);
 
@@ -210,7 +219,7 @@ int main(){
     printf("\nTEST 4: CONFIGURE POLARITY HIGH FAILED\n");
   }
 
-  //set polarity low
+  /*****************TEST TO SET PLARITY LOW*************************/
   write_value=POLARITY_MODE;
   read_value=read_write_configuration_register(file,1,write_value,0);
 
@@ -222,7 +231,7 @@ int main(){
   }
 
 
-  //configure interrupt mode
+  /**********************TEST TO CONFIGURE INTERRUPT MODE******************/
   write_value=THERMOSTAT_MODE;
   read_value=read_write_configuration_register(file,1,write_value,1);
 
@@ -234,7 +243,7 @@ int main(){
     printf("\nTEST 6: CONFIGURE INTERRUPT MODE FAILED\n");
   }
  
-  //configure comparator mode
+  /***********************TEST TO CONFIGURE COMPARATOR MODE******************/
   write_value=THERMOSTAT_MODE;
   read_value=read_write_configuration_register(file,1,write_value,0);
 
